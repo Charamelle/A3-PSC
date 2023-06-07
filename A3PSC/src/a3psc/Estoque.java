@@ -1,3 +1,5 @@
+package a3psc;
+
 public class Estoque {
      /* --------- ATRIBUTOS --------- */
         private static String [] produtos = new String[100];            // lista de produtos ativos

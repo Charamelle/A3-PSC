@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package loja.de.roupas;
-import java.util.Scanner;
-/**
- *
- * @author anapb
- */
-public class LojaDeRoupas {
+package a3psc;
 
-    /**
-     * @param args the command line arguments
-     */
+import java.util.Scanner;
+
+public class A3PSC {
+
+    
     public static void main(String[] args) {
-        // TODO code application logic here
-   //int idProduto, String nomeProduto, int quantidadeProduto 
-     Scanner sc = new Scanner(System.in);
+        
+        //int idProduto, String nomeProduto, int quantidadeProduto 
+        Scanner sc = new Scanner(System.in);
         Produto[] produtos = new Produto[2];
         Produto teste1= new Produto(1, "Blusa", 2);
         Produto teste2= new Produto(2, "Blusa2", 2);
@@ -51,5 +43,7 @@ public class LojaDeRoupas {
         }
     }
      }
+        
     }
-        }
+    
+}

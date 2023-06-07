@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package loja.de.roupas;
+package a3psc;
+
 import java.util.Scanner;
-/**
- *
- * @author anapb
- */
+
+
+
 public class FormaPagamento extends Pedido{
     Scanner sc = new Scanner(System.in);
     
