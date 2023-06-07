@@ -2,7 +2,7 @@ package a3psc;
 
 
 
-public class Produto{
+public class Produto extends Estoque{
  
     /* ------------ ATRIBUTOS ------------ */
     private int idProduto;
@@ -21,7 +21,7 @@ public class Produto{
     /* ------------ MÉTODO CONSTRUTOR ------------ */
     // Adicionar produtos
     public Produto(String setorProduto, String corProduto,String tam ){
-        this.idProduto = gerarID();;
+        //this.idProduto = gerarID();
         this.nomeProduto = gerarNome(corProduto, setorProduto, tam);
         this.qtdeProduto = 0;
         
@@ -29,7 +29,7 @@ public class Produto{
     }
     
     public Produto(String setorProduto, String corProduto, String tam, int qtdeProduto){
-        this.idProduto = gerarID();;
+        //this.idProduto = gerarID();;
         this.nomeProduto = gerarNome(corProduto, setorProduto, tam);
         this.qtdeProduto = qtdeProduto;
     }
@@ -37,28 +37,32 @@ public class Produto{
     
     /* ------------ OUTROS MÉTODOS ------------ */
        
-    public int gerarID(){
-        // por enquanto vai ficar assim, mas tava querendo fazer: 1a letra da banda + 
-        lastID++;
-        int id = lastID;
+    public int gerarID(int pos, String tam,String setor){
+        int numT = -1;
+        switch(tam){
+            case "P":
+                numT = 0;
+            case "M":
+                numT = 1;
+            case "G":
+                numT = 2;
+        }
+        String temp = String.valueOf(Estoque.pos) + String.valueOf(numT) + String.valueOf(Estoque.getSetor(setor));
+        int id = Integer.valueOf(temp);
         return id;
     }
 
+    // PRECISA TERMINAR AQ
     public String gerarNome(String cor, String setor, String tam){
         String nome = "";
-        nome = "CAMISETA " + setor.toUpperCase() + " " + cor.toUpperCase() + " TAM " + tam.toUpperCase();
+        nome = "CAMISETA " + setor.toUpperCase() + " ESTAMPA #" +  cor.toUpperCase() + " TAM " + tam.toUpperCase();
         return nome;
     }
     
-    
-
     public int getIdProduto() {
         return idProduto;
     }
 
-    
-    public void removerProduto(){
-    }
     public void alterarProduto(){      
     }
 

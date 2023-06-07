@@ -13,12 +13,16 @@ public class A3PSC {
         
         // testes
         
-        String setor = sc.nextLine();
-        String cor = sc.nextLine();
-        Estoque.addProduto(setor, cor);
-
-
-
+        
+        
+        for (int i = 0; i<3;i++){
+            String setor = sc.nextLine();
+            String cor = sc.nextLine();
+            Estoque.addProduto(setor, cor);
+            System.out.println(Estoque.getSetor(setor));
+        }
+        
+        Estoque.listarSetores();
     } 
 }
 
