@@ -1,14 +1,18 @@
 package a3psc;
 
 
-public class Pedido extends Produto{
+public class Pedido{
+
+    /* -------- ATRIBUTOS -------- */
     private int idPedido;
     private float orcamento;
-     public Pedido(int idProduto, String nomeProduto, int quantidadeProduto, int idPedido, float orcamento){
-        super(idProduto,nomeProduto,quantidadeProduto);
-        this.idPedido=idPedido;
-        this.orcamento=orcamento;
-    }
+    
+    /* -------- MÉTODO CONSTRUTOR -------- */
+    public Pedido(){}
+     
+     
+    /* -------- OUTROS MÉTODOS -------- */
+     
     public int getIdPedido(){
         return idPedido;
     }
@@ -21,22 +25,13 @@ public class Pedido extends Produto{
         return orcamento;
     }
 
-    public void setOrcamento(float orcamento){
-        this.orcamento = orcamento;
-    }
     public double calculaTotal(){
         return orcamento;
     }
     
-    public void fechaPedido(){
-        
-    }
-    @Override
-    public void adicionarProduto(){
-        
-    }
-    @Override
-    public void removerProduto(){
-        
-    }
+    public void fechaPedido(){}
+
+    public void adicionarProduto(){}
+
+    public void removerProduto(){}
 }

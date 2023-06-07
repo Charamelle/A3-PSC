@@ -3,53 +3,63 @@ package a3psc;
 
 
 public class Produto{
- private int idProduto;
- private String nomeProduto;
- private int quantidadeProduto;
  
- public Produto(int idProduto, String nomeProduto, int quantidadeProduto){
-     this.idProduto=idProduto;
-     this.nomeProduto=nomeProduto;
-     this.quantidadeProduto=quantidadeProduto;
- }
-    public int getIdProduto(){
+    /* ------------ ATRIBUTOS ------------ */
+    private int idProduto;
+    private String nomeProduto;
+    // ^^ gerados automaticamente
+    
+    private static int lastID = 100;
+    
+    
+    private String setorProduto;                                      // nome da banda
+    private String corProduto;                                        // cor da camiseta
+    private String tam;
+    private int qtdeProduto;
+ 
+    
+    /* ------------ MÉTODO CONSTRUTOR ------------ */
+    // Adicionar produtos
+    public Produto(String setorProduto, String corProduto,String tam ){
+        this.idProduto = gerarID();;
+        this.nomeProduto = gerarNome(corProduto, setorProduto, tam);
+        this.qtdeProduto = 0;
+        
+        System.out.println("Produto criado: " + this.nomeProduto);
+    }
+    
+    public Produto(String setorProduto, String corProduto, String tam, int qtdeProduto){
+        this.idProduto = gerarID();;
+        this.nomeProduto = gerarNome(corProduto, setorProduto, tam);
+        this.qtdeProduto = qtdeProduto;
+    }
+    
+    
+    /* ------------ OUTROS MÉTODOS ------------ */
+       
+    public int gerarID(){
+        // por enquanto vai ficar assim, mas tava querendo fazer: 1a letra da banda + 
+        lastID++;
+        int id = lastID;
+        return id;
+    }
+
+    public String gerarNome(String cor, String setor, String tam){
+        String nome = "";
+        nome = "CAMISETA " + setor.toUpperCase() + " " + cor.toUpperCase() + " TAM " + tam.toUpperCase();
+        return nome;
+    }
+    
+    
+
+    public int getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(int idProduto){
-        this.idProduto = idProduto;
-    }
-
-    public String getNomeProduto(){
-        return nomeProduto;
-    }
-
-    public void setNomeProduto(String nomeProduto){
-        this.nomeProduto = nomeProduto;
-    }
-
-    public int getQuantidadeProduto(){
-        return quantidadeProduto;
-    }
-
-    public void setQuantidadeProduto(int quantidadeProduto){
-        this.quantidadeProduto = quantidadeProduto;
-    }
-      public static void exibirProdutos(Produto[] produtos){
-        for(int i=0;i<produtos.length;i++){
-        Produto produto = produtos[i];
-            System.out.println("ID:" + produto.getIdProduto());
-            System.out.println("Nome:" + produto.getNomeProduto());
-            System.out.println("Quantidade:" + produto.getQuantidadeProduto());
-            System.out.println();
-    }
-      }
-            
-    public void adicionarProduto(){       
-    }
+    
     public void removerProduto(){
     }
     public void alterarProduto(){      
     }
-         
+
 }

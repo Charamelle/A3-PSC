@@ -1,37 +1,18 @@
-package a3psc;
+// package Main;
+// ^^ tira de comentário caso vc estiver no netbeans
 
 import java.util.Scanner;
 
-public class A3PSC {
 
+public class Main {
     
     public static void main(String[] args) {
-        
-        //int idProduto, String nomeProduto, int quantidadeProduto 
-        Scanner sc = new Scanner(System.in);
-        Estoque Estoque = new Estoque();
-        
-        // testes
-        
-        String setor = sc.nextLine();
-        String cor = sc.nextLine();
-        Estoque.addProduto(setor, cor);
-
-
-
-    } 
-}
-
-
-
-
-
-
-/* -------- COISAS DE TESTE -------- */
-        /*
-        Produto[] produtos = new Produto[2];
-        Produto teste1= new Produto(1, "Blusa", 2);
-        Produto teste2= new Produto(2, "Blusa2", 2);
+        // TODO code application logic here
+   //int idProduto, String nomeProduto, int quantidadeProduto 
+     Scanner sc = new Scanner(System.in);
+        exProduto[] produtos = new exProduto[2];
+        exProduto teste1= new exProduto(1, "Blusa", 2);
+        exProduto teste2= new exProduto(2, "Blusa2", 2);
         produtos[0]= teste1;
         produtos[1]= teste2;
 
@@ -39,7 +20,7 @@ public class A3PSC {
         System.out.println("Deseja ver as opcoes de camisetas disponiveis? (s/n)");
         char resposta= sc.next().charAt(0);
         if (resposta== 'S' || resposta== 's'){
-            Produto.exibirProdutos(produtos);
+            exProduto.exibirProdutos(produtos);
         }
         else{
            System.out.println("Programa encerrado:"); 
@@ -63,4 +44,5 @@ public class A3PSC {
         }
     }
      }
-     */ 
+    }
+        }

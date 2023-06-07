@@ -3,13 +3,12 @@ package a3psc;
 import java.util.Scanner;
 
 
-
 public class FormaPagamento extends Pedido{
     Scanner sc = new Scanner(System.in);
     
-public FormaPagamento(int idProduto,String nomeProduto,int quantidadeProduto,int idPedido,float orcamento, int idFormPgto, String formaPgto){
+/*public FormaPagamento(int idProduto,String nomeProduto,int quantidadeProduto,int idPedido,float orcamento, int idFormPgto, String formaPgto){
 super(idProduto,nomeProduto,quantidadeProduto, idPedido, orcamento);
-}
+}*/
 
 public void escolheForma(){
     double total = calculaTotal();
