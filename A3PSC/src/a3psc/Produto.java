@@ -7,29 +7,28 @@ public class Produto extends Estoque{
     /* ------------ ATRIBUTOS ------------ */
     private int idProduto;
     private String nomeProduto;
-    // ^^ gerados automaticamente
-    
-    private static int lastID = 100;
-    
-    
+    // ^^ gerados automaticamente    
     private String setorProduto;                                      // nome da banda
     private String corProduto;                                        // cor da camiseta
-    private String tam;
+    private String tam;                                               // P, M ou G
     private int qtdeProduto;
  
     
     /* ------------ MÉTODO CONSTRUTOR ------------ */
-    // Adicionar produtos
+    // Adicionar produtos - MAS NA VDD EH PRA USAR O .ADDPRODUTO DO ESTOQUE
+    public Produto(){}
+    
     public Produto(String setorProduto, String corProduto,String tam ){
-        //this.idProduto = gerarID();
+        this.tam = tam;
+        this.idProduto = gerarID(tam, setorProduto);
         this.nomeProduto = gerarNome(corProduto, setorProduto, tam);
         this.qtdeProduto = 0;
         
-        System.out.println("Produto criado: " + this.nomeProduto);
+        System.out.println("Produto criado: " + this.nomeProduto + "\nID: " + this.idProduto);
     }
     
     public Produto(String setorProduto, String corProduto, String tam, int qtdeProduto){
-        //this.idProduto = gerarID();;
+        this.idProduto = gerarID(tam, setorProduto);
         this.nomeProduto = gerarNome(corProduto, setorProduto, tam);
         this.qtdeProduto = qtdeProduto;
     }
@@ -37,22 +36,23 @@ public class Produto extends Estoque{
     
     /* ------------ OUTROS MÉTODOS ------------ */
        
-    public int gerarID(int pos, String tam,String setor){
+    public int gerarID(String tam,String setor){
         int numT = -1;
-        switch(tam){
-            case "P":
-                numT = 0;
-            case "M":
-                numT = 1;
-            case "G":
-                numT = 2;
+        int id = 0;
+        
+        if (tam == "P"){                // por algum motivo o switch case nn tava funcionando (tava fazendo cm se todas fossem G)
+            numT = 1;
+        } else if (tam == "M"){
+            numT = 2;
+        } else if (tam == "G"){
+            numT = 3;
         }
-        String temp = String.valueOf(Estoque.pos) + String.valueOf(numT) + String.valueOf(Estoque.getSetor(setor));
-        int id = Integer.valueOf(temp);
+  
+        id = Estoque.pos*100 + numT*10 + Estoque.getSetor(setor);
         return id;
     }
 
-    // PRECISA TERMINAR AQ
+    // PRECISA TERMINAR ESSA PARTE AQ
     public String gerarNome(String cor, String setor, String tam){
         String nome = "";
         nome = "CAMISETA " + setor.toUpperCase() + " ESTAMPA #" +  cor.toUpperCase() + " TAM " + tam.toUpperCase();
