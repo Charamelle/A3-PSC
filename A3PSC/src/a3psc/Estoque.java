@@ -5,7 +5,7 @@ public class Estoque {
     protected static Produto [][] produtos = new Produto[100][3];            // produtos ativos x tamanhos
     protected static String [][] setores = new String[20][20];               // setores x estampas
     protected static int pos = 1;                                            // indica a última posição em produtos[][]
-    protected static int numSetor = 1;                                       // quantidade de setores/bandas que tem
+    protected static int qtdeSetor = 1;                                       // quantidade de setores/bandas que tem
     protected static int idEstampa;
 
     
@@ -33,6 +33,8 @@ public class Estoque {
     // CRIAR PRODUTO: estampa já existente (também tem certeza que o setor já existe), sem declarar quantidades
     public void addProduto(String setor, int idEstampa, String cor){                         
         Estoque.idEstampa = idEstampa;
+        temSetor(setor);
+        setEstampa(setor, idEstampa);
         Estoque.produtos[pos][0] = new Produto(setor,cor,Estoque.idEstampa,"P");
         Estoque.produtos[pos][1] = new Produto(setor,cor,Estoque.idEstampa,"M");            // já cria 3 produtos (um de cada tamanho)
         Estoque.produtos[pos][2] = new Produto(setor,cor,Estoque.idEstampa,"G");
@@ -54,15 +56,15 @@ public class Estoque {
                 }
         }
         if(igual == false){                                                   // caso não encontrar a banda/setor do produto (novo setor):
-            Estoque.setores[numSetor][0] = setor.toUpperCase();               // cria um novo setor, com o nome do setor do produto cadastrado (tudo em letras maiúsculas)
-            Estoque.numSetor++;                                               // adiciona mais 1 no contador de número de bandas
+            Estoque.setores[qtdeSetor][0] = setor.toUpperCase();               // cria um novo setor, com o nome do setor do produto cadastrado (tudo em letras maiúsculas)
+            Estoque.qtdeSetor++;                                               // adiciona mais 1 no contador de número de bandas
         }
     }
     
 
     // MÉTODO: pegar o # do setor
     public static int getSetor(String setor){
-        int numSetor = -1;                                                   // só um número inicial que com certeza não é o número de um setor de verdade
+        int numSetor = -5;                                                   // só um número inicial que com certeza não é o número de um setor de verdade
         for (int i = 0; i<setores.length; i++){
             if (setores[i] != null){
                 if (setor.equalsIgnoreCase(setores[i][0])){
@@ -77,7 +79,7 @@ public class Estoque {
 
     // MÉTODO: setar o id e nome da estampa nova
     public void setEstampa(String setor){
-        int idEstampa = -1;
+        int idEstampa = -2;
         
         for (int i = 1;i<20;i++){
             if (setores[getSetor(setor)][i] == null){
@@ -88,6 +90,12 @@ public class Estoque {
         }
 
         System.out.println("id estampa FINAL: "+idEstampa);
+    }
+
+    // MÉTODO: setar a estampa quando já tem o ID
+    public void setEstampa(String setor, int idEstampa){
+        Estoque.idEstampa = idEstampa;
+        Estoque.setores[getSetor(setor)][idEstampa] = "ESTAMPA #"+Integer.toString(idEstampa);
     }
 
 

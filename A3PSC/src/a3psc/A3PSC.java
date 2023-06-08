@@ -26,7 +26,7 @@ public class A3PSC {
             System.out.println("estampa: ");
             int idEstampa = sc.nextInt();
 
-            Estoque.addProduto(setor, cor);
+            Estoque.addProduto(setor, idEstampa, cor);
             //}
             
 
