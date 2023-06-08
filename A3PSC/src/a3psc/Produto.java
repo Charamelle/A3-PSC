@@ -29,14 +29,17 @@ public class Produto extends Estoque{
     public Produto(){}
     
     public Produto(String setorProduto, String corProduto, int idEstampa, String tam ){
-        this.tam = tam;
-        this.estampa = super.getEstampa(setorProduto, idEstampa);
-        this.idProduto = gerarID(tam, setorProduto);
-        this.nomeProduto = gerarNome(corProduto, setorProduto, tam);
-        this.qtdeProduto = 0;
-        System.out.println("Produto criado: " + this.nomeProduto + "\nID: " + this.idProduto);
+        this.tam = tam;                                                                             // setar tamanho
+        this.estampa = super.getEstampa(setorProduto, idEstampa);                                   // setar NOME da estampa
+        this.idEstampa = Estoque.idEstampa;                                                         // setar ID da estampa
+        this.idProduto = gerarID(tam, setorProduto);                                                // gerar automaticamente o ID do produto
+        this.nomeProduto = gerarNome(corProduto, setorProduto, tam);                                // gerar automaticamente o nome do produto
+        this.qtdeProduto = 0;                                                                       // ---- dps precisa criar outro construtor que dê pra colocar a qtde
+
+        System.out.println("Produto criado: " + this.nomeProduto + "\nID: " + this.idProduto+"\nID da estampa: "+ this.idEstampa);      // APAGAR DEPOIS: só pra testes
     }
     
+
     /* ------------ OUTROS MÉTODOS ------------ */
     
     // MÉTODO: gerar automaticamente o código identificador do produto
@@ -44,15 +47,15 @@ public class Produto extends Estoque{
         int numT = -1;
         int id = 0;
         
-        if (tam == "P"){                         // por algum motivo o switch case não tava funcionando (tava dando como se todas fossem G) então foi de if else mesmo 
-            numT = 1;
+        if (tam == "P"){                         // pegando o número referente ao tamanho da camiseta
+            numT = 1;                            // por algum motivo o switch case não tava funcionando (tava dando como se todas fossem G) então foi de if else mesmo
         } else if (tam == "M"){
             numT = 2;
         } else if (tam == "G"){
             numT = 3;
         }
   
-        id = numT + super.pos*10 ;               // ID: POS na lista de produtos + TAMANHO (é o que precisa pra localizar a instância de "Produto" na lista)
+        id = numT + Estoque.pos*10 ;              // ID: POS na lista de produtos + TAMANHO (é o que precisa pra localizar a instância de "Produto" na lista)
         return id;
     }
 

@@ -21,12 +21,12 @@ public class Estoque {
     
     // CRIAR PRODUTO: nova estampa, sem declarar quantidades
     public void addProduto(String setor, String cor){                         
-        temSetor(setor);                                                      // checa se o produto é de um setor já existente ou novo
+        temSetor(setor);                                                                        // checa se o produto é de um setor já existente ou novo
         setEstampa(setor);
         Estoque.produtos[pos][0] = new Produto(setor,cor,Estoque.idEstampa,"P");
         Estoque.produtos[pos][1] = new Produto(setor,cor,Estoque.idEstampa,"M");            // já cria 3 produtos (um de cada tamanho)
         Estoque.produtos[pos][2] = new Produto(setor,cor,Estoque.idEstampa,"G");
-        pos++;                                                                // pra mover +1 pos na lista de produtos/pra nn sobrescrever
+        pos++;                                                                                  // pra mover +1 pos na lista de produtos/pra nn sobrescrever
 
     }
 
@@ -34,11 +34,11 @@ public class Estoque {
     public void addProduto(String setor, int idEstampa, String cor){                         
         Estoque.idEstampa = idEstampa;
         temSetor(setor);
-        setEstampa(setor, idEstampa);
+        setEstampa(setor, idEstampa);                                                           // definir estampa da camiseta
         Estoque.produtos[pos][0] = new Produto(setor,cor,Estoque.idEstampa,"P");
         Estoque.produtos[pos][1] = new Produto(setor,cor,Estoque.idEstampa,"M");            // já cria 3 produtos (um de cada tamanho)
         Estoque.produtos[pos][2] = new Produto(setor,cor,Estoque.idEstampa,"G");
-        pos++;                                                                // pra mover +1 pos na lista de produtos/pra nn sobrescrever
+        pos++;                                                                                  // pra mover +1 pos na lista de produtos/pra nn sobrescrever
 
     }
     
@@ -78,9 +78,7 @@ public class Estoque {
 
 
     // MÉTODO: setar o id e nome da estampa nova
-    public void setEstampa(String setor){
-        int idEstampa = -2;
-        
+    public void setEstampa(String setor){  
         for (int i = 1;i<20;i++){
             if (setores[getSetor(setor)][i] == null){
                 Estoque.setores[getSetor(setor)][i] = "ESTAMPA #"+Integer.toString(i);          // seta o nome da estampa (pode mudar dps)
@@ -88,8 +86,6 @@ public class Estoque {
                 break;
             }
         }
-
-        System.out.println("id estampa FINAL: "+idEstampa);
     }
 
     // MÉTODO: setar a estampa quando já tem o ID

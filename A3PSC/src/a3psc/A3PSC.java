@@ -14,20 +14,17 @@ public class A3PSC {
         // testes
             
         Estoque.addProduto("kiss", 1, "preta");
-        Estoque.addProduto("kiss", 2, "branca");
-        Estoque.addProduto("melanie", 1, "branca");
-            //for (int i=0;i<3;i++){
+
+            /*for (int i=0;i<3;i++){
             System.out.println("setor:");
             String setor = sc.nextLine();
 
             System.out.println("cor:");
             String cor = sc.nextLine();
             
-            System.out.println("estampa: ");
-            int idEstampa = sc.nextInt();
 
-            Estoque.addProduto(setor, idEstampa, cor);
-            //}
+            Estoque.addProduto(setor, cor);
+            }*/
             
 
     } 
