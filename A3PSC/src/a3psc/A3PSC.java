@@ -14,7 +14,9 @@ public class A3PSC {
         // testes
             
         Estoque.addProduto("kiss", 1, "preta");
-
+        System.out.println(Estoque.produtos[1][0].getSetorProduto());
+        Estoque.getFromID("pos", "1#1#1#1");
+        //Estoque.editarEstampa("1.1.1.1", "cu");
             /*for (int i=0;i<3;i++){
             System.out.println("setor:");
             String setor = sc.nextLine();

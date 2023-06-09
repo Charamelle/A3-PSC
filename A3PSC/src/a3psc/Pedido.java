@@ -1,5 +1,14 @@
 package a3psc;
 
+/* ----------- FUNÇÕES QUE PRECISA TER -----------
+* abrir pedido
+> cpa só criar
+* editar pedido
+* > produtos, qtdes
+* concluir pedido
+* cancelar pedido
+*/
+
 
 public class Pedido{
 
