@@ -1,8 +1,13 @@
 package a3psc;
 
+/* O QUE PRECISA ADD AQ
+ * listar produtos (tudo em uma string só - pra interface)
+ */
+
+
 public class Estoque {
     /* --------- ATRIBUTOS --------- */
-    public static Produto [][] produtos = new Produto[100][3];            // produtos ativos x tamanhos
+    protected static Produto [][] produtos = new Produto[100][3];            // produtos ativos x tamanhos
     protected static String [][] setores = new String[20][20];               // setores x estampas
     protected static int pos = 1;                                            // indica a última posição em produtos[][]
     protected static int qtdeSetor = 1;                                       // quantidade de setores/bandas que tem
@@ -12,7 +17,7 @@ public class Estoque {
     
     /* ------- MÉTODO CONSTRUTOR ------- */
     public Estoque(){
-        setores[0][0] = "#";                                                  // pra que no ID setores seja != 0 (e funcionar direitinho)
+        setores[0][0] = "#";                                                  // pra que no ID setores seja != 0 (e funcionar direitinho) -- n tem mais isso, mas nn vou mudar por preguiça
     }
     
     
@@ -130,7 +135,7 @@ public class Estoque {
     public void listarSetores(){
         System.out.println("Setores: ");
         for (int i = 0; i<setores.length;i++){
-            if (setores[i] == null){                                                  // pra ele não sair printando nullnullnullnull...
+            if (setores[i] == null){                                                        // pra ele não sair printando nullnullnullnull...
                 break;  
             }
             else{
@@ -212,4 +217,13 @@ public class Estoque {
         }
         
     }
+
+    
+    // MÉTODO: remover um produto da lista de produtos ativos 
+    public void deletarProduto(String idProduto){
+        Estoque.produtos[getFromID("pos", idProduto)][0].deletarProduto();
+        Estoque.produtos[getFromID("pos", idProduto)][1].deletarProduto();
+        Estoque.produtos[getFromID("pos", idProduto)][2].deletarProduto();
+    }
+
 }       

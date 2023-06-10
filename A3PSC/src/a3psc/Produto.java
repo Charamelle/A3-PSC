@@ -116,7 +116,12 @@ public class Produto extends Estoque{
     }
 
 
-
+    // MÉTODO: limpar dados/desativar produto
+    public void deletarProduto(){
+        this.idProduto = null;
+        this.nomeProduto = this.nomeProduto + " PRODUTO INDISPONÍVEL";
+        this.qtdeProduto = 0;
+    }
 
     // MÉTODOS: GETTERS
     public String getIdProduto() {
