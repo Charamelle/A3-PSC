@@ -11,7 +11,7 @@ super(idProduto,nomeProduto,quantidadeProduto, idPedido, orcamento);
 }*/
 
 public void escolheForma(){
-    double total = calculaTotal();
+    double total = getOrcamento();
     System.out.println("Valor da compra: " + total);
     System.out.println("Escolha o metodo de pagamento:");
     System.out.println("1- Cartao de Credito");

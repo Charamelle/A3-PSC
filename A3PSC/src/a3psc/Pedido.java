@@ -1,10 +1,11 @@
 package a3psc;
 
 /* ----------- FUNÇÕES QUE PRECISA TER -----------
-* abrir pedido
-> cpa só criar
-* editar pedido
-* > produtos, qtdes
+* abrir pedido                          OK
+* add produto
+* editar quantidade de cada produto
+* remover produto
+* selecionar a forma de pagamento
 * concluir pedido
 * cancelar pedido
 */
@@ -13,34 +14,45 @@ package a3psc;
 public class Pedido{
 
     /* -------- ATRIBUTOS -------- */
-    private int idPedido;
-    private float orcamento;
+    private String idPedido;                    // numPedido#cliente --> Ex. 100#0
+    private int idCliente;                      // se 0 = cliente não cadastrado
+    private double orcamento;                   // valor total a ser pago
+    private String produtosPedido[][];          // id produto x qtde
+    private static int numPedidos = 0;          // número total de pedidos (incluindo cancelados)
+    private String status;                      // se o pedido tá aberto/concluído/cancelado
     
     /* -------- MÉTODO CONSTRUTOR -------- */
-    public Pedido(){}
-     
-     
+    // abrir pedidos
+    public Pedido(){                                        // cliente não cadastrado
+        this.idCliente = 0;
+        this.idPedido = gerarIdPedido(this.idCliente);
+        this.orcamento = 0;
+    }
+
+    public Pedido(int idCliente){                           // cliente cadastrado
+        this.idCliente = idCliente;
+        this.idPedido = gerarIdPedido(this.idCliente);
+        this.orcamento = 0;
+    }     
     /* -------- OUTROS MÉTODOS -------- */
-     
-    public int getIdPedido(){
-        return idPedido;
+    
+    // MÉTODOS: criar id
+     public String gerarIdPedido(int idCliente){
+        Pedido.numPedidos++;
+        String id = (Pedido.numPedidos) + "#" + idCliente;
+        return id;
     }
 
-    public void setIdPedido(int idPedido){
-        this.idPedido = idPedido;
-    }
 
-    public float getOrcamento(){
-        return orcamento;
-    }
 
-    public double calculaTotal(){
+
+
+
+
+
+    // MÉTODOS: getters
+    public double getOrcamento(){
         return orcamento;
     }
     
-    public void fechaPedido(){}
-
-    public void adicionarProduto(){}
-
-    public void removerProduto(){}
 }

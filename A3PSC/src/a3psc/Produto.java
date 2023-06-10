@@ -1,14 +1,12 @@
 package a3psc;
 
-import javax.swing.text.StyledEditorKit;
-
 /* ---------- FUNÇÕES QUE PRECISA FAZER ----------
  * add Produto                                       OK
  * > gerar ID auto                                   OK
  * > gerar nome auto                                 OK
  * alterar produto                                   OK
  * > nome (da estampa) do produto, preço e qtde      OK
- * remover produto
+ * remover produto                              
  */
 
 
@@ -25,6 +23,7 @@ public class Produto extends Estoque{
     private int idEstampa;                                            // id da estampa daquele setor (imutável)
     private int qtdeProduto;
     private double preco;
+    private static double precoBase = 40;                             // produtos ao serem criados vão ter esse preço
  
     
     /* ------------ MÉTODO CONSTRUTOR ------------ */
@@ -40,6 +39,7 @@ public class Produto extends Estoque{
         this.idEstampa = Estoque.idEstampa;                                                         // setar ID da estampa
         this.idProduto = gerarID(tam, setorProduto);                                                // gerar automaticamente o ID do produto
         this.nomeProduto = gerarNome(corProduto, setorProduto, tam);                                // gerar automaticamente o nome do produto
+        this.preco = Produto.precoBase;
         this.qtdeProduto = 0;                                                                      
 
         System.out.println("Produto criado: " + this.nomeProduto + "\nID: " + this.idProduto+"\nID da estampa: "+ this.idEstampa);      // APAGAR DEPOIS: só pra testes
@@ -54,6 +54,7 @@ public class Produto extends Estoque{
         this.idEstampa = Estoque.idEstampa;                                                         // setar ID da estampa
         this.idProduto = gerarID(tam, setorProduto);                                                // gerar automaticamente o ID do produto
         this.nomeProduto = gerarNome(corProduto, setorProduto, tam);                                // gerar automaticamente o nome do produto
+        this.preco = Produto.precoBase;
         this.qtdeProduto = qtdeProduto;                                                            
 
         System.out.println("Produto criado: " + this.nomeProduto + "\nID: " + this.idProduto+"\nID da estampa: "+ this.idEstampa);      // APAGAR DEPOIS: só pra testes
@@ -84,7 +85,12 @@ public class Produto extends Estoque{
         return nome;
     }
     
+    // MÉTODO: alterar preço base
+    public static void precoBase(int novoPreco){
+        Produto.precoBase = novoPreco;
+    }
 
+    
     /* ------------ MÉTODOS SUPORTE ------------ */
     // OS MÉTODOS DAQUI PRA BAIXO SÃO SÓ PRA SEREM USADOS NA CLASSE ESTOQUE (QUE É A CLASSE CHEFE)
 
