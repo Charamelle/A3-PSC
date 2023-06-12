@@ -64,7 +64,7 @@ public class Produto extends Estoque{
     /* ------------ OUTROS MÉTODOS ------------ */
     
     // MÉTODO: gerar automaticamente o código identificador do produto
-    public String gerarID(String tam,String setor){
+    private String gerarID(String tam,String setor){
         int numT = -1;
         
         if (tam == "P"){                         // pegando o número referente ao tamanho da camiseta
@@ -80,7 +80,7 @@ public class Produto extends Estoque{
     }
 
     // MÉTODO: gerar automaticamente o nome do produto
-    public String gerarNome(String cor, String setor, String tam){
+    private String gerarNome(String cor, String setor, String tam){
         String nome = "CAMISETA " + setor.toUpperCase() + " " + this.estampa.toUpperCase() + " " + cor.toUpperCase() + " TAM " + tam.toUpperCase();
         return nome;
     }
