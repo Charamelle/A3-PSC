@@ -1,170 +1,73 @@
 package a3psc;
 
-/* ---------- FUNÇÕES QUE PRECISA FAZER ----------
- * add Produto                                       OK
- * > gerar ID auto                                   OK
- * > gerar nome auto                                 OK
- * alterar produto                                   OK
- * > nome (da estampa) do produto, preço e qtde      OK
- * remover produto                              
- */
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-
-public class Produto extends Estoque{
- 
+public class Produto {
+    
     /* ------------ ATRIBUTOS ------------ */
-    private String idProduto;
-    private String nomeProduto;
+    protected int id;
+    protected String nome;
     // ^^ gerados automaticamente    
-    private String setorProduto;                                      // nome da banda
-    private String corProduto;                                        // cor da camiseta
-    private String tam;                                               // P, M ou G
-    private String estampa;                                           // nome da estampa (dá pra mudar)
-    private int idEstampa;                                            // id da estampa daquele setor (imutável)
-    private int qtdeProduto;
-    private double preco;
-    private static double precoBase = 40;                             // produtos ao serem criados vão ter esse preço
- 
+    protected static String setor;                                         // nome da banda
+    protected static String cor;                                           // cor da camiseta
+    protected String tamanho;                                       // P, M ou G
+    protected String estampa;                                       // nome da estampa (dá pra mudar)
+    protected static int idEstampa;                                        // id da estampa daquele setor (imutável)
+    protected int qtde;
+    protected double preco;
+    protected static double precoBase = 40;   
+    private Connection con = Conexao.getConexao();
     
-    /* ------------ MÉTODO CONSTRUTOR ------------ */
-    // Pra adicionar produtos, é pra usar o método addProduto do Estoque
-    public Produto(){}
     
-    // Criar produto sem declarar quantidades (qtde zerada)
-    public Produto(String setorProduto, String corProduto, int idEstampa, String tam ){
-        this.setorProduto = setorProduto;                                                           // setar o setor/banda
-        this.corProduto = corProduto;                                                               // setar a cor
-        this.tam = tam;                                                                             // setar tamanho
-        this.estampa = super.getEstampa(setorProduto, idEstampa);                                   // setar NOME da estampa
-        this.idEstampa = Estoque.idEstampa;                                                         // setar ID da estampa
-        this.idProduto = gerarID(tam, setorProduto);                                                // gerar automaticamente o ID do produto
-        this.nomeProduto = gerarNome(corProduto, setorProduto, tam);                                // gerar automaticamente o nome do produto
-        this.preco = Produto.precoBase;
-        this.qtdeProduto = 0;                                                                      
+    /* ------------ CONSTRUTORES ------------ */
+    protected Produto(){}
 
-        System.out.println("Produto criado: " + this.nomeProduto + "\nID: " + this.idProduto+"\nID da estampa: "+ this.idEstampa);      // APAGAR DEPOIS: só pra testes
-    }
-
-    // Criar produto declarando as quantidades iniciais
-    public Produto(String setorProduto, String corProduto, int idEstampa, String tam, int qtdeProduto){
-        this.setorProduto = setorProduto;                                                           // setar o setor/banda
-        this.corProduto = corProduto;                                                               // setar a cor
-        this.tam = tam;                                                                             // setar tamanho
-        this.estampa = super.getEstampa(setorProduto, idEstampa);                                   // setar NOME da estampa
-        this.idEstampa = Estoque.idEstampa;                                                         // setar ID da estampa
-        this.idProduto = gerarID(tam, setorProduto);                                                // gerar automaticamente o ID do produto
-        this.nomeProduto = gerarNome(corProduto, setorProduto, tam);                                // gerar automaticamente o nome do produto
-        this.preco = Produto.precoBase;
-        this.qtdeProduto = qtdeProduto;                                                            
-
-        System.out.println("Produto criado: " + this.nomeProduto + "\nID: " + this.idProduto+"\nID da estampa: "+ this.idEstampa);      // APAGAR DEPOIS: só pra testes
+    // Criar produto -- protegido pra que só dê pra criar pela ProdutoDAO
+    protected Produto(String setor, String cor, String tamanho, int idEstampa, String estampa, int qtde){
+        this.setor = setor;
+        this.cor = cor;
+        this.tamanho = tamanho;
+        this.estampa = estampa;
+        this.idEstampa = idEstampa;
+        this.qtde = qtde;
+        this.preco = precoBase;
+        this.nome = gerarNome();
     }
     
-
-    /* ------------ OUTROS MÉTODOS ------------ */
+    /* -------------- MÉTODOS -------------- */
     
-    // MÉTODO: gerar automaticamente o código identificador do produto
-    private String gerarID(String tam,String setor){
-        int numT = -1;
-        
-        if (tam == "P"){                         // pegando o número referente ao tamanho da camiseta
-            numT = 0;                            // por algum motivo o switch case não tava funcionando (tava dando como se todas fossem G) então foi de if else mesmo
-        } else if (tam == "M"){
-            numT = 1;
-        } else if (tam == "G"){
-            numT = 2;
-        }
-  
-        String id = Estoque.pos + "#" + numT + "#" + super.getSetor(setor) + "#" + this.idEstampa;              // ID: POS na lista de produtos + TAMANHO (é o que precisa pra localizar a instância de "Produto" na lista)
-        return id;                                                                                              // + SETOR + IDESTAMPA
-    }
-
     // MÉTODO: gerar automaticamente o nome do produto
-    private String gerarNome(String cor, String setor, String tam){
-        String nome = "CAMISETA " + setor.toUpperCase() + " " + this.estampa.toUpperCase() + " " + cor.toUpperCase() + " TAM " + tam.toUpperCase();
+    protected String gerarNome(){
+        String nome = "CAMISETA " + this.setor.toUpperCase() + " " + this.estampa.toUpperCase() + " " + this.cor.toUpperCase() + " TAM " + this.tamanho.toUpperCase();
         return nome;
     }
+     
     
-    // MÉTODO: alterar preço base
-    public static void precoBase(int novoPreco){
-        Produto.precoBase = novoPreco;
+    // MÉTODO: pegar o tamanho da camiseta - pra criação
+    protected static String getTamanho(int i){
+        return switch (i) {
+            case 0 -> "P";
+            case 1 -> "M";
+            case 2 -> "G";
+            default -> "#";
+        };
     }
-
     
-    /* ------------ MÉTODOS SUPORTE ------------ */
-    // OS MÉTODOS DAQUI PRA BAIXO SÃO SÓ PRA SEREM USADOS NA CLASSE ESTOQUE (QUE É A CLASSE CHEFE)
-
-
-    // MÉTODO: alterar preço do produto
-    public void editaProduto(double novoPreco){
-        this.preco = novoPreco;
+    // MÉTODO: pra poder printar a info
+    protected String toStringInfo(){
+        String txt = "Nome: " + this.nome + "\nSetor: " + this.setor + "\nCor: "+this.cor+"\nTamanho: "+this.tamanho+"\nEstampa: "+this.estampa+" (ID: "+this.idEstampa+")\nQuantidade: "+this.qtde+"\nPreco: "+this.preco+"\n----+---";
+        return txt;
     }
-
-    // MÉTODO: alterar quantidade do produto (set)
-    public void editaProduto(int novaQtde){
-        this.qtdeProduto = novaQtde;
-    }
-
-    // MÉTODO: alterar quantidade do produto (add ou remove 1)
-    public void editaProduto(char operacao){
-        switch(operacao){
-            case '+':
-            this.qtdeProduto++;
-            case '-':
-            this.qtdeProduto--;
-        }
-    }
-
-    // MÉTODO: alterar nome da estampa do produto
-    public void editaProduto(String novaEstampa){
-        this.estampa = novaEstampa;
-        this.nomeProduto = gerarNome(this.corProduto, this.setorProduto, this.tam);
-    }
-
-
-    // MÉTODO: limpar dados/desativar produto
-    public void deletarProduto(){
-        this.idProduto = null;
-        this.nomeProduto = this.nomeProduto + " PRODUTO INDISPONÍVEL";
-        this.qtdeProduto = 0;
-    }
-
-    // MÉTODOS: GETTERS
-    public String getIdProduto() {
-        return idProduto;
-    }
-
-    public String getNomeProduto() {
-        return nomeProduto;
-    }
-
-    public String getSetorProduto() {
-        return setorProduto;
-    }
-
-    public String getCorProduto() {
-        return corProduto;
-    }
-
-    public String getTam() {
-        return tam;
-    }
-
-    public String getEstampa() {
-        return estampa;
-    }
-
-    public int getIdEstampa() {
-        return idEstampa;
-    }
-
-    public int getQtdeProduto() {
-        return qtdeProduto;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
     
+    // MÉTODO: get preço
+    protected double getPreco(){
+        return this.preco;
+    }
+    
+    // MÉTODO: get qtde
+    protected int getQtde(){
+        return this.qtde;
+    }
 }
