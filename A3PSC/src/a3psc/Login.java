@@ -148,11 +148,9 @@ public class Login {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if(rs.next()){
-                System.out.println("logando...");
                 return true;
             }
             else{
-                System.out.println("Usuario ou senha incorretos");
                 return false;
             }
         } catch (SQLException ex) {

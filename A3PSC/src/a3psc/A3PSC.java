@@ -4,6 +4,6 @@ public class A3PSC {
 
     
     public static void main(String[] args) {
-        
+        Login.cadastrar("usuario", "senha");
     } 
 }

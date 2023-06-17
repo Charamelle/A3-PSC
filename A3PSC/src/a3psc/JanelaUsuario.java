@@ -1,18 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package a3psc;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Adrielle
- */
 public class JanelaUsuario extends javax.swing.JFrame {
 
-    
+    private String usuario;
+    private String senha;
    
     //construtor
     public JanelaUsuario() {
@@ -112,8 +105,12 @@ public class JanelaUsuario extends javax.swing.JFrame {
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
         // TODO add your handling code here:
-         if(txtNome.getText().equals("usuario")&& new String (Pass.getPassword()).equals("1234")) {
-          
+        usuario = txtNome.getText();
+        senha = new String(Pass.getPassword());
+        
+        
+        //if(txtNome.getText().equals("usuario")&& new String (Pass.getPassword()).equals("1234")) {
+          if(Login.login(usuario, senha)){
          }else{
         
              JOptionPane.showMessageDialog(null,"Usuario ou senha invalidos");
@@ -124,12 +121,14 @@ public class JanelaUsuario extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
+        usuario = txtNome.getText();
+        senha = new String(Pass.getPassword());
         JanelaMenu telaDeMenu = new JanelaMenu();
         telaDeMenu.setLocationRelativeTo(null);
         
         JanelaUsuario telaUsuario = new JanelaUsuario();
     
-        if(txtNome.getText().equals("usuario")&& new String (Pass.getPassword()).equals("1234")) {
+        if(Login.login(usuario, senha)) {
        
             telaDeMenu.setVisible(true);
         } else {
