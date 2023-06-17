@@ -25,7 +25,7 @@ public class Pedido {
 
     // MÉTODO: abrir/criar novo pedido --- ocorre ao abrir a aba de pedidos
     public static void abrirPedido(){
-        String query = "INSERT INTO pedido (status) VALUE (?)";
+        String query = "INSERT INTO pedido (estado) VALUE (?)";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1,"ABERTO");
@@ -59,7 +59,7 @@ public class Pedido {
         setIdAtivo();
         String query1 = "SELECT * FROM pedidoproduto WHERE idPedido ="+Pedido.idPedidoAtivo;
         String query2 = "UPDATE produto SET qtde = ? WHERE idProd = ?";
-        String query3 = "UPDATE pedido SET status = 'CONCLUIDO' WHERE idPedido = ?";
+        String query3 = "UPDATE pedido SET estado = 'CONCLUIDO' WHERE idPedido = ?";
         try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query1);
