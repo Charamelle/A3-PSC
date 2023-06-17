@@ -10,6 +10,8 @@ public class Conexao {
     /* ^ NÃO EDITAR ESSES DOIS DE CIMA ^ */
     
     private static final String password = "";  // É ESSE DAQUI QUE EDITA: coloca sua senha do root do mysql
+    // obs. esse arquivo não eh mandado pro github, então não precisa tirar a senha toda vez que for dar commit no github :)
+    
 
     /*~ criar a conexão ~*/
     private static Connection conn;
