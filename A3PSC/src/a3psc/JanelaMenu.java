@@ -29,40 +29,33 @@ public class JanelaMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmMenuEstoque = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jmMenuPedido = new javax.swing.JMenu();
         jmMenuPagamento = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 355, Short.MAX_VALUE)
+            .addGap(0, 315, Short.MAX_VALUE)
         );
 
-        jmMenuEstoque.setMnemonic('A');
-        jmMenuEstoque.setText("Estoque");
-        jmMenuEstoque.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jmMenuEstoqueMenuSelected(evt);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
+        jMenu1.setText("Estoque");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
             }
         });
-        jmMenuEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmMenuEstoqueActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jmMenuEstoque);
+        jMenuBar1.add(jMenu1);
 
         jmMenuPedido.setMnemonic('S');
         jmMenuPedido.setText("Pedido");
@@ -73,6 +66,11 @@ public class JanelaMenu extends javax.swing.JFrame {
                 jmMenuPedidoMenuDeselected(evt);
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
+            }
+        });
+        jmMenuPedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmMenuPedidoMouseClicked(evt);
             }
         });
         jmMenuPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -108,37 +106,13 @@ public class JanelaMenu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jmMenuEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMenuEstoqueActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jmMenuEstoqueActionPerformed
-
-    private void jmMenuEstoqueMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jmMenuEstoqueMenuSelected
-        // TODO add your handling code here:
-        JanelaEstoque tela = new JanelaEstoque();
-        tela.setVisible(true);
-        
-        
-    }//GEN-LAST:event_jmMenuEstoqueMenuSelected
 
     private void jmMenuPedidoMenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jmMenuPedidoMenuDeselected
         // TODO add your handling code here:
-        JanelaPedido tela = new JanelaPedido();
-        tela.setVisible(true);
+       
         
     }//GEN-LAST:event_jmMenuPedidoMenuDeselected
 
@@ -154,6 +128,7 @@ public class JanelaMenu extends javax.swing.JFrame {
 
     private void jmMenuPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMenuPedidoActionPerformed
         // TODO add your handling code here:
+      
         
     }//GEN-LAST:event_jmMenuPedidoActionPerformed
 
@@ -163,9 +138,30 @@ public class JanelaMenu extends javax.swing.JFrame {
 
     private void jmMenuPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmMenuPagamentoMouseClicked
         // TODO add your handling code here:
+        this.dispose();
+        
         JanelaPagamento tela = new JanelaPagamento();
         tela.setVisible(true);
+        
+        tela.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmMenuPagamentoMouseClicked
+
+    private void jmMenuPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmMenuPedidoMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        
+        JanelaPedido telinha = new JanelaPedido();
+        telinha.setVisible(true);
+        telinha.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmMenuPedidoMouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+         JanelaEstoque telona = new JanelaEstoque();
+        telona.setVisible(true);
+        telona.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -203,9 +199,9 @@ public class JanelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenu jmMenuEstoque;
     private javax.swing.JMenu jmMenuPagamento;
     private javax.swing.JMenu jmMenuPedido;
     // End of variables declaration//GEN-END:variables

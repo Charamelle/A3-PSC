@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  */
 public class JanelaUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JanelaPrincipal
-     */
+    
+   
     //construtor
     public JanelaUsuario() {
         initComponents();
+               
     }
 
     /**
@@ -41,6 +41,14 @@ public class JanelaUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de login");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Marola", 0, 24)); // NOI18N
@@ -99,6 +107,7 @@ public class JanelaUsuario extends javax.swing.JFrame {
         getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, 20));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
@@ -116,13 +125,23 @@ public class JanelaUsuario extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
         JanelaMenu telaDeMenu = new JanelaMenu();
+        telaDeMenu.setLocationRelativeTo(null);
         
+        JanelaUsuario telaUsuario = new JanelaUsuario();
+    
         if(txtNome.getText().equals("usuario")&& new String (Pass.getPassword()).equals("1234")) {
        
             telaDeMenu.setVisible(true);
         } else {
-              JOptionPane.showMessageDialog(null,"Usuario ou senha invalidos");
+            JOptionPane.showMessageDialog(null,"Usuario ou senha invalidos, digite novamente");
+            telaDeMenu.setVisible(false);
+            telaUsuario.setVisible(true);
         }
+        
+        this.dispose();
+       
+       
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -141,10 +160,18 @@ public class JanelaUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtNome.setText("");
         Pass.setText("");
-    
-        
-        
+   
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+ 
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

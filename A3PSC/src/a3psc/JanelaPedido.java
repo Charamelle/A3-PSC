@@ -28,103 +28,168 @@ public class JanelaPedido extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
+        jbVoltarCam = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jbMenuCamis = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton10 = new javax.swing.JRadioButton();
-        jRadioButton11 = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtNome1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
+        txtNome2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Marola", 2, 24)); // NOI18N
-        jLabel1.setText("Camisetas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 14, 159, -1));
+        jLabel1.setFont(new java.awt.Font("Marola", 2, 36)); // NOI18N
+        jLabel1.setText("Pedido");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 160, -1));
 
-        jButton1.setText("voltar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 502, -1, -1));
-
-        jButton2.setText("continuar");
-        jButton2.setToolTipText("");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 502, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("OCR-A BT", 1, 18)); // NOI18N
-        jLabel2.setText("Tamanhos:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 173, 141, -1));
-
-        jRadioButton1.setText("KISS");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbVoltarCam.setText("voltar");
+        jbVoltarCam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                jbVoltarCamActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 98, 98, -1));
+        getContentPane().add(jbVoltarCam, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 570, 80, 20));
 
-        jRadioButton2.setText("AEROSMITH");
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 125, 98, -1));
+        jButton4.setText("continuar");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 570, 90, 20));
 
-        jRadioButton3.setText("GREEN DAY");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        jbMenuCamis.setText("Voltar ao menu principal");
+        jbMenuCamis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                jbMenuCamisActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 98, 98, -1));
+        getContentPane().add(jbMenuCamis, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 170, 20));
 
-        jRadioButton4.setText("IRON MAIDEN");
-        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 98, 117, -1));
+        jLabel2.setText("Adicionar ou remover produtos do pedido");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jRadioButton5.setText("AC/DC");
-        getContentPane().add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 125, 98, -1));
+        jLabel3.setText("ID do produto:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 90, -1));
 
-        jRadioButton6.setText("P");
-        getContentPane().add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 205, 98, -1));
+        txtNome.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                txtNomeAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 70, -1));
 
-        jRadioButton7.setText("M");
-        getContentPane().add(jRadioButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 205, 98, -1));
+        jButton1.setText("Adicionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
 
-        jRadioButton9.setText("G");
-        jRadioButton9.setToolTipText("");
-        getContentPane().add(jRadioButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 205, 98, -1));
+        jButton2.setText("Remover");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
 
-        jRadioButton8.setText("BRANCO");
-        getContentPane().add(jRadioButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 276, 98, -1));
+        jLabel4.setText("Filtrar pesquisa");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 90, 30));
 
-        jRadioButton10.setText("CINZA");
-        getContentPane().add(jRadioButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 276, 98, -1));
+        txtNome1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                txtNome1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 240, -1));
 
-        jRadioButton11.setText("PRETO");
-        getContentPane().add(jRadioButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 276, 98, -1));
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel5.setFont(new java.awt.Font("OCR-A BT", 1, 18)); // NOI18N
-        jLabel5.setText("Cores:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 244, 141, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 420, 190));
 
-        jLabel6.setFont(new java.awt.Font("OCR-A BT", 1, 18)); // NOI18N
-        jLabel6.setText("Estampas:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 72, 141, -1));
+        jLabel5.setText("Total de pedidos: ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 110, -1));
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 240, 370));
+
+        jLabel6.setText("Preço total em R$:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, 20));
+
+        txtNome2.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                txtNome2AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        getContentPane().add(txtNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 180, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jbMenuCamisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuCamisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+        this.dispose();
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        JanelaMenu telaMenu = new JanelaMenu();
+        telaMenu.setVisible(true);
+        telaMenu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jbMenuCamisActionPerformed
+
+    private void jbVoltarCamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarCamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+        this.dispose();
+
+        JanelaEstoque telaProd = new JanelaEstoque();
+        telaProd.setVisible(true);
+      
+    }//GEN-LAST:event_jbVoltarCamActionPerformed
+
+    private void txtNomeAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomeAncestorAdded
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtNomeAncestorAdded
+
+    private void txtNome1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNome1AncestorAdded
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtNome1AncestorAdded
+
+    private void txtNome2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNome2AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome2AncestorAdded
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +217,9 @@ public class JanelaPedido extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JanelaPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -165,20 +233,21 @@ public class JanelaPedido extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton11;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JButton jbMenuCamis;
+    private javax.swing.JButton jbVoltarCam;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNome1;
+    private javax.swing.JTextField txtNome2;
     // End of variables declaration//GEN-END:variables
 }

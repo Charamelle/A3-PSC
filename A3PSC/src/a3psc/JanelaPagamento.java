@@ -4,6 +4,8 @@
  */
 package a3psc;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Adrielle
@@ -26,19 +28,21 @@ public class JanelaPagamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jrCartaoDeb = new javax.swing.JRadioButton();
+        jrCartaoCred = new javax.swing.JRadioButton();
+        jrDinheiro = new javax.swing.JRadioButton();
+        jbVoltarPag = new javax.swing.JButton();
+        jbConluirPag = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbAlterar = new javax.swing.JButton();
+        jbVoltarMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,25 +55,51 @@ public class JanelaPagamento extends javax.swing.JFrame {
         jLabel2.setText("Selecione a forma de pagamento:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 158, 290, -1));
 
-        jRadioButton1.setText("Cartão de Débito");
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 180, 123, -1));
-
-        jRadioButton2.setText("Cartão de Crédito");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(jrCartaoDeb);
+        jrCartaoDeb.setText("Cartão de Débito");
+        jrCartaoDeb.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jrCartaoDeb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                jrCartaoDebActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 180, 137, -1));
+        getContentPane().add(jrCartaoDeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 123, -1));
 
-        jRadioButton3.setText("Dinheiro");
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 98, -1));
+        buttonGroup1.add(jrCartaoCred);
+        jrCartaoCred.setText("Cartão de Crédito");
+        jrCartaoCred.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jrCartaoCred.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrCartaoCredActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jrCartaoCred, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 137, -1));
 
-        jButton1.setText("Voltar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
+        buttonGroup1.add(jrDinheiro);
+        jrDinheiro.setText("Dinheiro");
+        jrDinheiro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jrDinheiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrDinheiroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jrDinheiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 98, -1));
 
-        jButton2.setText("Concluir");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
+        jbVoltarPag.setText("Voltar");
+        jbVoltarPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVoltarPagActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbVoltarPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
+
+        jbConluirPag.setText("Concluir");
+        jbConluirPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConluirPagActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbConluirPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("OCR-A BT", 1, 14)); // NOI18N
         jLabel3.setText("Valor da compra:");
@@ -81,7 +111,7 @@ public class JanelaPagamento extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 94, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 94, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("OCR-A BT", 1, 14)); // NOI18N
         jLabel4.setText("Total de itens:");
@@ -96,18 +126,30 @@ public class JanelaPagamento extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 71, -1));
 
-        jButton4.setText("Usar esta forma de pagamento");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
+        jbAlterar.setText("Alterar");
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, -1, -1));
 
-        jButton5.setText("Alterar");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+        jbVoltarMenu.setText("Voltar ao menu principal");
+        jbVoltarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVoltarMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbVoltarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jrCartaoCredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrCartaoCredActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+        jrCartaoDeb.setVisible(false);
+        jrDinheiro.setVisible(false);
+    }//GEN-LAST:event_jrCartaoCredActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -116,6 +158,48 @@ public class JanelaPagamento extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jbVoltarPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarPagActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        
+        JanelaPedido telaCam = new JanelaPedido();
+        telaCam.setVisible(true);
+    }//GEN-LAST:event_jbVoltarPagActionPerformed
+
+    private void jbVoltarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVoltarMenuActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+      
+        JanelaMenu telaMenu = new JanelaMenu();
+        telaMenu.setVisible(true);
+        telaMenu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jbVoltarMenuActionPerformed
+
+    private void jbConluirPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConluirPagActionPerformed
+        // TODO add your handling code here:
+          JOptionPane.showMessageDialog(null,"Compra efetuada com sucesso");
+          // falta cair no bd q foi feito
+    }//GEN-LAST:event_jbConluirPagActionPerformed
+
+    private void jrCartaoDebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrCartaoDebActionPerformed
+        // TODO add your handling code here:
+        jrCartaoCred.setVisible(false);
+        jrDinheiro.setVisible(false);
+    }//GEN-LAST:event_jrCartaoDebActionPerformed
+
+    private void jrDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrDinheiroActionPerformed
+        // TODO add your handling code here:
+        jrCartaoCred.setVisible(false);
+        jrCartaoDeb.setVisible(false);
+    }//GEN-LAST:event_jrDinheiroActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        // TODO add your handling code here:
+        jrCartaoCred.setVisible(true);
+        jrCartaoDeb.setVisible(true);
+        jrDinheiro.setVisible(true);
+    }//GEN-LAST:event_jbAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,18 +237,20 @@ public class JanelaPagamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton jbAlterar;
+    private javax.swing.JButton jbConluirPag;
+    private javax.swing.JButton jbVoltarMenu;
+    private javax.swing.JButton jbVoltarPag;
+    private javax.swing.JRadioButton jrCartaoCred;
+    private javax.swing.JRadioButton jrCartaoDeb;
+    private javax.swing.JRadioButton jrDinheiro;
     // End of variables declaration//GEN-END:variables
 }
