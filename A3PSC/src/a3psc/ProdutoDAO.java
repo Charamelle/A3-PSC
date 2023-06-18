@@ -642,4 +642,43 @@ public class ProdutoDAO extends Produto {
         return txt;
     }
     
+    public static String filtrarProduto(String pesquisa){
+        String queryS = "SELECT * FROM setor WHERE nomeSetor LIKE '%"+pesquisa+"%'";
+            String queryE = "SELECT * FROM estampa WHERE nomeEstampa LIKE '%"+pesquisa+"%' OR setorEstampa LIKE '%"+pesquisa+"%'";
+            String queryP = "SELECT * FROM produto WHERE nomeProd LIKE '%"+pesquisa+"%'";
+            String txt = "";
+            String setor = "~*~ SETORES ~*~";
+            String estampa = "~*~ ESTAMPAS ~*~";
+            String produto = "~*~ PRODUTOS ~*~";
+            
+        try {
+            Statement stmt = con.createStatement();
+            //pesquisando e pegando os produtos
+            ResultSet rs = stmt.executeQuery(queryP);
+            while(rs.next()){
+                produto = produto+"\n[ID: "+rs.getInt("idProd") + "]   "
+                        + rs.getString("nomeProd") + "  [QTDE: "+rs.getInt("qtde")+"]  "
+                        + "[R$ " + rs.getDouble("preco")+"]";
+            }
+            
+            //pegando as estampas
+            ResultSet rs2 = stmt.executeQuery(queryE);
+            while(rs2.next()){
+                estampa = estampa+"\n[ID: "+rs2.getInt("idEstampa") + "]  "
+                        + rs2.getString("nomeEstampa")+"   [SETOR: "
+                        + rs2.getString("setorEstampa") + "]";
+            }
+            
+            //pegando os setores
+            ResultSet rs3 = stmt.executeQuery(queryS);
+            while(rs3.next()){
+                setor = setor+"\n"+rs3.getString(1);
+            }
+            txt = setor+"\n\n"+estampa+"\n\n"+produto;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        return txt;
+    }
+    
 }
