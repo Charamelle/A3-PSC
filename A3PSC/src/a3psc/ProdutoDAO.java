@@ -534,7 +534,10 @@ public class ProdutoDAO extends Produto {
     }
     
     public static void setupBD(){
-    // setores
+        // usuário
+        Login.cadastrar("admin","umasenhamuitolonga1234");
+        
+        // setores
         criarSetor("MUSE");
         criarSetor("MCR");
         criarSetor("KISS");
@@ -572,16 +575,28 @@ public class ProdutoDAO extends Produto {
             PreparedStatement ps3 = con.prepareStatement("DELETE FROM setor");
             PreparedStatement ps4 = con.prepareStatement("DELETE FROM produto");
             PreparedStatement ps5 = con.prepareStatement("ALTER TABLE produto AUTO_INCREMENT=1");
+            PreparedStatement ps6 = con.prepareStatement("DELETE FROM pedido");
+            PreparedStatement ps7 = con.prepareStatement("ALTER TABLE pedido AUTO_INCREMENT=1");
+            PreparedStatement ps8 = con.prepareStatement("DELETE FROM pedidoproduto");
+            PreparedStatement ps9 = con.prepareStatement("DELETE FROM login");
             ps1.execute();
             ps2.execute();
             ps3.execute();
             ps4.execute();
             ps5.execute();
+            ps6.execute();
+            ps7.execute();
+            ps8.execute();
+            ps9.execute();
             ps1.close();
             ps2.close();
             ps3.close();
             ps4.close();
             ps5.close();
+            ps6.close();
+            ps7.close();
+            ps8.close();
+            ps9.close();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

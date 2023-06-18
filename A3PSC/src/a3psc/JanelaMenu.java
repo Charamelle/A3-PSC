@@ -32,6 +32,7 @@ public class JanelaMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jmMenuPedido = new javax.swing.JMenu();
         jMenuEditarUsuario = new javax.swing.JMenu();
+        jMenuLogout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,6 +94,22 @@ public class JanelaMenu extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenuEditarUsuario);
 
+        jMenuLogout.setBackground(new java.awt.Color(255, 204, 204));
+        jMenuLogout.setForeground(new java.awt.Color(153, 0, 0));
+        jMenuLogout.setText("LOGOUT");
+        jMenuLogout.setToolTipText("");
+        jMenuLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuLogoutMouseClicked(evt);
+            }
+        });
+        jMenuLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuLogoutActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenuLogout);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -113,12 +130,13 @@ public class JanelaMenu extends javax.swing.JFrame {
 
     private void jmMenuPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmMenuPedidoMouseClicked
         // TODO add your handling code here:
+        Pedido.abrirPedido();
         this.dispose();
         
         JanelaPedido telinha = new JanelaPedido();
         telinha.setVisible(true);
         telinha.setLocationRelativeTo(null);
-        Pedido.abrirPedido();
+        
     }//GEN-LAST:event_jmMenuPedidoMouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -143,6 +161,17 @@ public class JanelaMenu extends javax.swing.JFrame {
         telaEdit.setVisible(true);
         telaEdit.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuEditarUsuarioMouseClicked
+
+    private void jMenuLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuLogoutMouseClicked
+        this.dispose();
+        JanelaUsuario login = new JanelaUsuario();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuLogoutMouseClicked
+
+    private void jMenuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLogoutActionPerformed
+        
+    }//GEN-LAST:event_jMenuLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +212,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEditarUsuario;
+    private javax.swing.JMenu jMenuLogout;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu jmMenuPedido;
     // End of variables declaration//GEN-END:variables

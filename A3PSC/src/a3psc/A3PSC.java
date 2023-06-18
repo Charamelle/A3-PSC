@@ -4,11 +4,11 @@ public class A3PSC {
 
 
     public static void main(String[] args) {
-        //ProdutoDAO.resetBD();
-        //ProdutoDAO.setupBD();
+        ProdutoDAO.resetBD();
+        ProdutoDAO.setupBD();
         
        
-        JanelaEstoque janela = new JanelaEstoque();
+        JanelaUsuario janela = new JanelaUsuario();
         janela.setVisible(true);
         
         

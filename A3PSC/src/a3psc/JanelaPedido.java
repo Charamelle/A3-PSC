@@ -53,6 +53,7 @@ public class JanelaPedido extends javax.swing.JFrame {
         jlErroPgto = new javax.swing.JLabel();
         jlErroPgto.setVisible(false);
         jbAlterar = new javax.swing.JToggleButton();
+        jbFiltrar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,7 +112,7 @@ public class JanelaPedido extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 240, -1));
+        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 260, -1));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -205,6 +206,14 @@ public class JanelaPedido extends javax.swing.JFrame {
         });
         getContentPane().add(jbAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
 
+        jbFiltrar.setText("🔎");
+        jbFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbFiltrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, 60, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,6 +264,8 @@ public class JanelaPedido extends javax.swing.JFrame {
             jlMensagens.setVisible(true);
         }
         jTextArea1.setText(Pedido.listaPedido());
+        String pesquisa = txtNome1.getText();
+        jTextArea2.setText(ProdutoDAO.filtrarProduto(pesquisa));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -280,6 +291,8 @@ public class JanelaPedido extends javax.swing.JFrame {
             jlMensagens.setVisible(true);
         }
         jTextArea1.setText(Pedido.listaPedido());
+        String pesquisa = txtNome1.getText();
+        jTextArea2.setText(ProdutoDAO.filtrarProduto(pesquisa));
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -351,6 +364,12 @@ public class JanelaPedido extends javax.swing.JFrame {
         jlErroPgto.setVisible(false);
     }//GEN-LAST:event_jrPixActionPerformed
 
+    private void jbFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFiltrarActionPerformed
+        String pesquisa = txtNome1.getText();
+        jTextArea2.setText(ProdutoDAO.filtrarProduto(pesquisa));
+        
+    }//GEN-LAST:event_jbFiltrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -405,6 +424,7 @@ public class JanelaPedido extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JToggleButton jbAlterar;
+    private javax.swing.JToggleButton jbFiltrar;
     private javax.swing.JButton jbMenuCamis;
     private javax.swing.JLabel jlErroPgto;
     private javax.swing.JLabel jlMensagens;
