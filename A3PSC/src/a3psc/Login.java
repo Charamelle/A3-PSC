@@ -18,7 +18,7 @@ public class Login {
     /* ------------ MÉTODOS ------------ */
         
     // MÉTODO: verificar se já tem alguém com aquele usuário                    
-    private static boolean checarUsuario(String usuario){
+    public static boolean checarUsuario(String usuario){
         String query = "SELECT usuario FROM login WHERE usuario = '"+usuario+"'";
         
         try {
@@ -35,7 +35,7 @@ public class Login {
     
     
     // MÉTODO: verificar se o nome de usuário é permitido
-    private static boolean usuarioOK(String usuario){
+    public static boolean usuarioOK(String usuario){
         char[]temp = usuario.toCharArray();
         return temp.length >= 3;
         
@@ -150,4 +150,20 @@ public class Login {
         }
     }
  
+    
+    // MÉTODO: listar usuarios
+    public static String listarUsuarios(){
+        String txt = "";
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM login");
+            while(rs.next()){
+                txt = txt +">> "+ rs.getString("usuario") + "\n";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return txt;
+    }
+    
 }

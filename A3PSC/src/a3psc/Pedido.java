@@ -259,6 +259,28 @@ public class Pedido {
             return -1;
         }
     }
+   
     
+    // MÉTODO: listar produtos no pedido
+    public static String listaPedido(){
+        setIdAtivo();
+        String txt = "";
+        String query = "SELECT * FROM pedidoproduto WHERE idPedido = "+Pedido.idPedidoAtivo;
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while(rs.next()){//nome, preco UN, qtde, id
+                int idProd = rs.getInt("idProd");
+                String nome = ProdutoDAO.getNome(idProd);
+                double precoUN = ProdutoDAO.getPreco(idProd);
+                int qtde = rs.getInt("qtdeProd");
+                
+                txt = txt+"[ID: "+idProd+"]  "+nome+"  [Preço UN.: "+precoUN+"]  [QTDE: "+qtde+"]\n";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return txt;
+    }
     
 }

@@ -426,6 +426,11 @@ public class ProdutoDAO extends Produto {
         return produtos[idProd].getPreco();
     }
    
+    // MÉTODO: get nome
+    public static String getNome(int idProd){
+        sync();
+        return produtos[idProd].nome;
+    }
     
     // MÉTODO: get qtde
     public static int getQtde(int idProd){
@@ -620,5 +625,21 @@ public class ProdutoDAO extends Produto {
         return txt;
     }
 
+    public static String listaProdutos(){
+        String txt = "~*~ PRODUTOS DA LOJA ~*~\n\n";
+        try {
+            //pegando os produtos
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM produto");
+            while(rs.next()){
+                txt = txt+"\n[ID: "+rs.getInt("idProd") + "]   "
+                        + rs.getString("nomeProd") + "  [QTDE: "+rs.getInt("qtde")+"]  "
+                        + "[R$ " + rs.getDouble("preco")+"]";
+            }  
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return txt;
+    }
     
 }

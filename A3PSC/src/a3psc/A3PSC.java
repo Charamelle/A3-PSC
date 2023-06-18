@@ -8,8 +8,8 @@ public class A3PSC {
         //ProdutoDAO.setupBD();
         
        
-        JanelaEstoque estq = new JanelaEstoque();
-        estq.setVisible(true);
+        JanelaEditarUsuario janela = new JanelaEditarUsuario();
+        janela.setVisible(true);
         
     } 
 }

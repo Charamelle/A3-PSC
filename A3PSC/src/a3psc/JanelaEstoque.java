@@ -103,7 +103,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbCriarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 80, -1));
+        getContentPane().add(jbCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 80, -1));
 
         jbLimpar.setText("Limpar");
         jbLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +111,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbLimparActionPerformed(evt);
             }
         });
-        getContentPane().add(jbLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 90, -1));
+        getContentPane().add(jbLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 90, -1));
 
         jbApagar.setText("Apagar");
         jbApagar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,11 +119,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbApagarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbApagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 80, -1));
+        getContentPane().add(jbApagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 80, -1));
 
         jlD.setText("ID:");
         jlD.setEnabled(false);
-        getContentPane().add(jlD, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 174, 37, -1));
+        getContentPane().add(jlD, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 37, -1));
 
         txtCor.setEnabled(false);
         txtCor.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -140,7 +140,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtCorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 70, -1));
+        getContentPane().add(txtCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 70, -1));
 
         jlNomeSetor.setText("Setor:");
         jlNomeSetor.setEnabled(false);
@@ -160,15 +160,15 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtNome1ActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 220, -1));
+        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 220, -1));
 
         jlNomeEstampa.setText("Estampa:");
         jlNomeEstampa.setEnabled(false);
-        getContentPane().add(jlNomeEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 20));
+        getContentPane().add(jlNomeEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, 20));
 
         jlProdutinhoEscolher.setText("Produtos:");
         jlProdutinhoEscolher.setEnabled(false);
-        getContentPane().add(jlProdutinhoEscolher, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
+        getContentPane().add(jlProdutinhoEscolher, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, -1, -1));
 
         buttonGroup2.add(jrqtde);
         jrqtde.setText("Qtde");
@@ -178,7 +178,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jrqtdeActionPerformed(evt);
             }
         });
-        getContentPane().add(jrqtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, -1, -1));
+        getContentPane().add(jrqtde, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, -1, -1));
 
         buttonGroup2.add(jrPreco);
         jrPreco.setText("Preço");
@@ -188,7 +188,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jrPrecoActionPerformed(evt);
             }
         });
-        getContentPane().add(jrPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
+        getContentPane().add(jrPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
 
         buttonGroup2.add(jrCor);
         jrCor.setText("Cor");
@@ -198,11 +198,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jrCorActionPerformed(evt);
             }
         });
-        getContentPane().add(jrCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
+        getContentPane().add(jrCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, -1));
 
         jlNovaCor.setText("Nova Cor:");
         jlNovaCor.setEnabled(false);
-        getContentPane().add(jlNovaCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, 20));
+        getContentPane().add(jlNovaCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, 20));
 
         jbConfirmaProx.setText("Confirmar");
         jbConfirmaProx.setEnabled(false);
@@ -211,19 +211,19 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbConfirmaProxActionPerformed(evt);
             }
         });
-        getContentPane().add(jbConfirmaProx, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 640, 90, -1));
+        getContentPane().add(jbConfirmaProx, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 660, 90, -1));
 
         jlSetor.setText("Setor:");
         jlSetor.setEnabled(false);
-        getContentPane().add(jlSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 40, -1));
+        getContentPane().add(jlSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 40, -1));
 
         jlEstampinha.setText("Estampa:");
         jlEstampinha.setEnabled(false);
-        getContentPane().add(jlEstampinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, -1, -1));
+        getContentPane().add(jlEstampinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, -1, -1));
 
         jlPreco.setText("Preço:");
         jlPreco.setEnabled(false);
-        getContentPane().add(jlPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 600, 40, -1));
+        getContentPane().add(jlPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 40, -1));
 
         txtNomeEstampa.setEnabled(false);
         txtNomeEstampa.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -240,7 +240,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtNomeEstampaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNomeEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 270, -1));
+        getContentPane().add(txtNomeEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 270, -1));
 
         txtQuantidade.setEnabled(false);
         txtQuantidade.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -257,7 +257,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtQuantidadeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 570, 160, -1));
+        getContentPane().add(txtQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, 160, -1));
 
         txtEstampa.setEnabled(false);
         txtEstampa.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -274,7 +274,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtEstampaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 570, 140, -1));
+        getContentPane().add(txtEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, 140, -1));
 
         txtpreco.setEnabled(false);
         txtpreco.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -291,15 +291,15 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtprecoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtpreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 140, -1));
+        getContentPane().add(txtpreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, 140, -1));
 
         jlCorzinha.setText("Cor:");
         jlCorzinha.setEnabled(false);
-        getContentPane().add(jlCorzinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 540, 40, -1));
+        getContentPane().add(jlCorzinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 40, -1));
 
         jlQuantidade.setText("qnte:");
         jlQuantidade.setEnabled(false);
-        getContentPane().add(jlQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 40, -1));
+        getContentPane().add(jlQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 40, -1));
 
         txtSetor.setEnabled(false);
         txtSetor.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -316,7 +316,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtSetorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 140, -1));
+        getContentPane().add(txtSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 140, -1));
 
         txtCorzinha.setEnabled(false);
         txtCorzinha.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -333,7 +333,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtCorzinhaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCorzinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 160, -1));
+        getContentPane().add(txtCorzinha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, 160, -1));
 
         jbConfirmarSet.setText("Confirmar");
         jbConfirmarSet.setEnabled(false);
@@ -342,10 +342,10 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbConfirmarSetActionPerformed(evt);
             }
         });
-        getContentPane().add(jbConfirmarSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 90, -1));
+        getContentPane().add(jbConfirmarSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 90, -1));
 
         jLabel12.setText("Filtrar Pesquisa:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         txtNominho.setEnabled(false);
         txtNominho.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -362,11 +362,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtNominhoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNominho, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 280, -1));
+        getContentPane().add(txtNominho, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 280, -1));
 
-        jLabel18.setFont(new java.awt.Font("Marola", 0, 24)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
         jLabel18.setText("Área de estoque");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 250, 20));
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 330, 50));
 
         buttonGroup1.add(jrSetorMenu);
         jrSetorMenu.setText("Setor");
@@ -376,7 +376,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jrSetorMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jrSetorMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 60, -1));
+        getContentPane().add(jrSetorMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 60, -1));
 
         buttonGroup1.add(jrEstampaMenu);
         jrEstampaMenu.setText("Estampa");
@@ -385,7 +385,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jrEstampaMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jrEstampaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 80, -1));
+        getContentPane().add(jrEstampaMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 80, -1));
 
         txtValor.setEnabled(false);
         txtValor.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -402,11 +402,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtValorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 70, -1));
+        getContentPane().add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 70, -1));
 
         jlValor.setText("Novo valor R$:");
         jlValor.setEnabled(false);
-        getContentPane().add(jlValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        getContentPane().add(jlValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
 
         txtQnte.setEnabled(false);
         txtQnte.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -423,11 +423,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtQnteActionPerformed(evt);
             }
         });
-        getContentPane().add(txtQnte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 70, 30));
+        getContentPane().add(txtQnte, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 70, 30));
 
         jlNewQnte.setText("Nova Qnte:");
         jlNewQnte.setEnabled(false);
-        getContentPane().add(jlNewQnte, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        getContentPane().add(jlNewQnte, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
 
         jbMenuCriar.setText("Voltar ao menu principal");
         jbMenuCriar.addActionListener(new java.awt.event.ActionListener() {
@@ -435,7 +435,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbMenuCriarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbMenuCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, -1, -1));
+        getContentPane().add(jbMenuCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 660, -1, -1));
 
         jbEditar1.setText("Editar");
         jbEditar1.addActionListener(new java.awt.event.ActionListener() {
@@ -443,7 +443,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbEditar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jbEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 80, -1));
+        getContentPane().add(jbEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 80, -1));
 
         jbLimpandoBotton1.setText("Limpar");
         jbLimpandoBotton1.addActionListener(new java.awt.event.ActionListener() {
@@ -451,7 +451,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbLimpandoBotton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jbLimpandoBotton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 80, -1));
+        getContentPane().add(jbLimpandoBotton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 80, -1));
 
         jbLimparCriacao.setText("Limpar");
         jbLimparCriacao.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -461,7 +461,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbLimparCriacaoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbLimparCriacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 670, 90, -1));
+        getContentPane().add(jbLimparCriacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 690, 90, -1));
 
         jbConfirmarSetorzinho.setText("Confirmar");
         jbConfirmarSetorzinho.setEnabled(false);
@@ -470,7 +470,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbConfirmarSetorzinhoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbConfirmarSetorzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, 90, -1));
+        getContentPane().add(jbConfirmarSetorzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 90, -1));
 
         jbLimparEdit.setText("Limpar");
         jbLimparEdit.setEnabled(false);
@@ -479,7 +479,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbLimparEditActionPerformed(evt);
             }
         });
-        getContentPane().add(jbLimparEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 90, -1));
+        getContentPane().add(jbLimparEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 90, -1));
 
         buttonGroup1.add(jrProdutoMenuzinho);
         jrProdutoMenuzinho.setText("Produto");
@@ -488,11 +488,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jrProdutoMenuzinhoActionPerformed(evt);
             }
         });
-        getContentPane().add(jrProdutoMenuzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 90, -1));
+        getContentPane().add(jrProdutoMenuzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 90, -1));
 
         jlCriarProduto.setText("Criar Produto:");
         jlCriarProduto.setEnabled(false);
-        getContentPane().add(jlCriarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
+        getContentPane().add(jlCriarProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
         jbMenuVoltEditzinho.setText("Voltar ao menu");
         jbMenuVoltEditzinho.setEnabled(false);
@@ -501,7 +501,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbMenuVoltEditzinhoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbMenuVoltEditzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+        getContentPane().add(jbMenuVoltEditzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, -1, -1));
 
         jbVoltandojr.setText("Voltar");
         jbVoltandojr.setEnabled(false);
@@ -510,7 +510,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbVoltandojrActionPerformed(evt);
             }
         });
-        getContentPane().add(jbVoltandojr, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 90, -1));
+        getContentPane().add(jbVoltandojr, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 90, -1));
 
         jbConfirmarEstSet.setText("Confirmar");
         jbConfirmarEstSet.setEnabled(false);
@@ -519,7 +519,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbConfirmarEstSetActionPerformed(evt);
             }
         });
-        getContentPane().add(jbConfirmarEstSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 90, -1));
+        getContentPane().add(jbConfirmarEstSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 90, -1));
 
         jbLimparEstSet.setText("Limpar");
         jbLimparEstSet.setEnabled(false);
@@ -528,12 +528,12 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbLimparEstSetActionPerformed(evt);
             }
         });
-        getContentPane().add(jbLimparEstSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 90, -1));
+        getContentPane().add(jbLimparEstSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 90, -1));
 
         txtConsulta.setEditable(false);
         jScrollPane1.setViewportView(txtConsulta);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 510, 550));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 510, 550));
 
         jbPesquisar.setText("🔎");
         jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -541,32 +541,32 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbPesquisarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 70, -1));
+        getContentPane().add(jbPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, 70, -1));
 
         jlErroSelecionar.setForeground(new java.awt.Color(204, 0, 0));
         jlErroSelecionar.setText("Selecione uma das seguintes opções primeiro:");
-        getContentPane().add(jlErroSelecionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 340, 20));
+        getContentPane().add(jlErroSelecionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 340, 20));
         jlErroSelecionar.setVisible(false);
 
         jlErroIdInvalido.setForeground(new java.awt.Color(204, 0, 0));
         jlErroIdInvalido.setText("O ID inserido é inválido.");
-        getContentPane().add(jlErroIdInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 280, -1));
+        getContentPane().add(jlErroIdInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 280, -1));
 
         jlErroESExiste.setForeground(new java.awt.Color(204, 0, 0));
         jlErroESExiste.setText("Estampa ou Setor já existente.");
-        getContentPane().add(jlErroESExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 270, -1));
+        getContentPane().add(jlErroESExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 270, -1));
 
         jlErroValorInvalido.setForeground(new java.awt.Color(204, 0, 0));
         jlErroValorInvalido.setText("Valor inserido inválido.");
-        getContentPane().add(jlErroValorInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
+        getContentPane().add(jlErroValorInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, -1, -1));
 
         jlErroCriarProd.setForeground(new java.awt.Color(204, 0, 0));
         jlErroCriarProd.setText("msg - erro");
-        getContentPane().add(jlErroCriarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, 200, -1));
+        getContentPane().add(jlErroCriarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 660, 200, -1));
 
         jlConcluido.setForeground(new java.awt.Color(0, 102, 0));
         jlConcluido.setText("Operação concluída!");
-        getContentPane().add(jlConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 250, -1));
+        getContentPane().add(jlConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, -1));
 
         txtNomeSetor.setEnabled(false);
         txtNomeSetor.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -583,10 +583,10 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtNomeSetorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNomeSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 270, -1));
+        getContentPane().add(txtNomeSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 270, -1));
 
         jlSetorEstampa.setText("Nome Setor/Estampa");
-        getContentPane().add(jlSetorEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        getContentPane().add(jlSetorEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Produtos", "Estampas", "Setores" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -594,7 +594,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 110, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

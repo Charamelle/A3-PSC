@@ -31,7 +31,6 @@ public class JanelaMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmMenuPedido = new javax.swing.JMenu();
-        jmMenuPagamento = new javax.swing.JMenu();
         jMenuEditarUsuario = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -81,30 +80,6 @@ public class JanelaMenu extends javax.swing.JFrame {
         });
         jMenuBar1.add(jmMenuPedido);
 
-        jmMenuPagamento.setMnemonic('D');
-        jmMenuPagamento.setText("Pagamento");
-        jmMenuPagamento.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-                jmMenuPagamentoMenuDeselected(evt);
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jmMenuPagamentoMenuSelected(evt);
-            }
-        });
-        jmMenuPagamento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jmMenuPagamentoMouseClicked(evt);
-            }
-        });
-        jmMenuPagamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmMenuPagamentoActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jmMenuPagamento);
-
         jMenuEditarUsuario.setText("Editar Usuario");
         jMenuEditarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,35 +105,11 @@ public class JanelaMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmMenuPedidoMenuDeselected
 
-    private void jmMenuPagamentoMenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jmMenuPagamentoMenuDeselected
-        // TODO add your handling code here:
-      
-    }//GEN-LAST:event_jmMenuPagamentoMenuDeselected
-
-    private void jmMenuPagamentoMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jmMenuPagamentoMenuSelected
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jmMenuPagamentoMenuSelected
-
     private void jmMenuPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMenuPedidoActionPerformed
         // TODO add your handling code here:
       
         
     }//GEN-LAST:event_jmMenuPedidoActionPerformed
-
-    private void jmMenuPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMenuPagamentoActionPerformed
-    
-    }//GEN-LAST:event_jmMenuPagamentoActionPerformed
-
-    private void jmMenuPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmMenuPagamentoMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-        
-        JanelaPagamento tela = new JanelaPagamento();
-        tela.setVisible(true);
-        
-        tela.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jmMenuPagamentoMouseClicked
 
     private void jmMenuPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmMenuPedidoMouseClicked
         // TODO add your handling code here:
@@ -167,6 +118,7 @@ public class JanelaMenu extends javax.swing.JFrame {
         JanelaPedido telinha = new JanelaPedido();
         telinha.setVisible(true);
         telinha.setLocationRelativeTo(null);
+        Pedido.abrirPedido();
     }//GEN-LAST:event_jmMenuPedidoMouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -232,7 +184,6 @@ public class JanelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuEditarUsuario;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenu jmMenuPagamento;
     private javax.swing.JMenu jmMenuPedido;
     // End of variables declaration//GEN-END:variables
 

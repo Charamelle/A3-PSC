@@ -23,18 +23,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmMenuPedidoActionPerformed"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jmMenuPagamento">
-          <Properties>
-            <Property name="mnemonic" type="int" value="68"/>
-            <Property name="text" type="java.lang.String" value="Pagamento"/>
-          </Properties>
-          <Events>
-            <EventHandler event="menuDeselected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="jmMenuPagamentoMenuDeselected"/>
-            <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="jmMenuPagamentoMenuSelected"/>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmMenuPagamentoMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmMenuPagamentoActionPerformed"/>
-          </Events>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuEditarUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar Usuario"/>

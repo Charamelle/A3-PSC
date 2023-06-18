@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package a3psc;
 
-/**
- *
- * @author Adrielle
- */
 public class JanelaEditarUsuario extends javax.swing.JFrame {
 
     /**
@@ -17,6 +10,10 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
         initComponents();
     }
 
+    private char cea; 
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +30,7 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jTextArea1.setText(Login.listarUsuarios());
         btnApagar = new javax.swing.JButton();
         jNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -41,15 +39,23 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
         jbSalvarEditar = new javax.swing.JButton();
         jrNome = new javax.swing.JRadioButton();
         jrSenha = new javax.swing.JRadioButton();
-        jrAmbos = new javax.swing.JRadioButton();
         jbMenuCriar = new javax.swing.JButton();
+        jlErro = new javax.swing.JLabel();
+        jlErro.setVisible(false);
+        jlOK = new javax.swing.JLabel();
+        jlOK.setVisible(false);
+        jLabel3 = new javax.swing.JLabel();
+        jLabel3.setEnabled(false);
+        jNovoNome = new javax.swing.JLabel();
+        jNovoNome.setVisible(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(654, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Marola", 0, 24)); // NOI18N
-        jLabel1.setText("editando usuario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+        jLabel1.setText("Gerenciar Usuários");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 230, -1));
 
         btnCriar.setText("Criar");
         btnCriar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,13 +82,14 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
         getContentPane().add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
         jLabel2.setText("Usuários cadastrados");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, 20));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 160, 270));
 
         btnApagar.setText("Apagar");
         btnApagar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +101,7 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
 
         jNome.setText("Nome:");
         jNome.setEnabled(false);
-        getContentPane().add(jNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        getContentPane().add(jNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         txtNome.setEnabled(false);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +113,7 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
 
         jSenha.setText("Senha:");
         jSenha.setEnabled(false);
-        getContentPane().add(jSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        getContentPane().add(jSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 50, 20));
 
         txtSenha.setEnabled(false);
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -118,19 +125,30 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
 
         jbSalvarEditar.setText("Salvar");
         jbSalvarEditar.setEnabled(false);
+        jbSalvarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarEditarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jbSalvarEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 80, -1));
 
         jrNome.setText("Nome");
         jrNome.setEnabled(false);
-        getContentPane().add(jrNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        jrNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrNomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jrNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
 
         jrSenha.setText("Senha");
         jrSenha.setEnabled(false);
-        getContentPane().add(jrSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
-
-        jrAmbos.setText("Ambos");
-        jrAmbos.setEnabled(false);
-        getContentPane().add(jrAmbos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
+        jrSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrSenhaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jrSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
         jbMenuCriar.setText("Voltar ao menu principal");
         jbMenuCriar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,9 +158,39 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(jbMenuCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 170, -1));
 
+        jlErro.setForeground(new java.awt.Color(255, 102, 102));
+        jlErro.setText("[mensagens de erro aq]");
+        getContentPane().add(jlErro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 210, 20));
+
+        jlOK.setForeground(new java.awt.Color(0, 204, 0));
+        jlOK.setText("[mensagens OK]");
+        getContentPane().add(jlOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 306, 170, 20));
+
+        jLabel3.setText("O que editar:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 90, 20));
+
+        jNovoNome.setText("Novo Nome:");
+        getContentPane().add(jNovoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 80, 20));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void ativNome(boolean tf){
+        jNome.setEnabled(tf);
+        txtNome.setEnabled(tf);
+    }
+    
+    private void ativSenha(boolean tf){
+        jSenha.setEnabled(tf);
+        txtSenha.setEnabled(tf);
+    }
+    
+    private void ativJr(boolean tf){
+        jrNome.setEnabled(tf);
+        jrSenha.setEnabled(tf);
+    }
+    
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
@@ -151,6 +199,111 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
 
+    
+    private void criarUsuario(){
+        String usuario = txtNome.getText();
+        String senha = txtSenha.getText();
+        if(!Login.checarUsuario(usuario)){
+            if(Login.usuarioOK(usuario)){
+                Login.cadastrar(usuario, senha);
+                jlOK.setText("Usuário cadastrado");
+                jlOK.setVisible(true);
+                limpar();
+            }
+            else{
+                jlErro.setText("Nome de usuário muito curto.");
+                jlErro.setVisible(true);
+            }
+        }
+        else{
+            jlErro.setText("Nome de usuário já em uso");
+            jlErro.setVisible(true);
+        }
+    }
+    
+    private void editarNome(){
+        String usuario = txtNome.getText();
+        String novoUsuario = txtSenha.getText();
+        if(Login.checarUsuario(usuario)){
+            if(Login.usuarioOK(usuario)){
+                Login.editarUsuario(usuario, novoUsuario);
+                jlOK.setText("Nome de usuário alterado.");
+                jlOK.setVisible(true);
+                limpar();
+            }
+            else{
+                jlErro.setText("Nome de usuário muito curto.");
+                jlErro.setVisible(true);
+            }
+        }
+        else{
+            jlErro.setText("Usuário inexistente.");
+            jlErro.setVisible(true);
+        }
+    }
+    
+    private void editarSenha(){
+        String usuario = txtNome.getText();
+        String senha = txtSenha.getText();
+        if(Login.checarUsuario(usuario)){
+            Login.editarSenha(usuario, senha);
+            jlOK.setText("Senha alterada.");
+            jlOK.setVisible(true);
+            limpar();
+        }
+        else{
+            jlErro.setText("Usuário inexistente.");
+            jlErro.setVisible(true);
+        }
+    
+    }
+    
+    private void apagarUsuario(){
+        String usuario = txtNome.getText();
+        if(Login.checarUsuario(usuario)){
+            Login.deletarUsuario(usuario);
+            jlOK.setText("Usuário removido.");
+            jlOK.setVisible(true);
+            limpar();
+        }
+        else{
+            jlErro.setText("Usuário inexistente.");
+            jlErro.setVisible(true);
+        }
+    }
+    
+    private void limpar(){
+        jlErro.setVisible(false);
+        //botoes
+        btnCriar.setEnabled(true);
+        btnEditar.setEnabled(true);
+        btnApagar.setEnabled(true);
+        // campos
+        jrNome.setEnabled(false);
+        jSenha.setVisible(true);
+        jrSenha.setEnabled(false);
+        jNome.setEnabled(false);
+        txtNome.setEnabled(false);
+        jSenha.setEnabled(false);
+        txtSenha.setEnabled(false);
+        jbSalvarEditar.setEnabled(false);
+        jNovoNome.setVisible(false);
+        txtNome.setText("");
+        txtSenha.setText("");
+        
+        jrSenha.setSelected(false);
+        jrNome.setSelected(false);
+        jTextArea1.setText(Login.listarUsuarios());
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void jbMenuCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuCriarActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -161,80 +314,93 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jbMenuCriarActionPerformed
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
-        // TODO add your handling code here:
-        
+        jlOK.setVisible(false);
+        jlErro.setVisible(false);
+        cea = 'C';
         // botoes
         btnEditar.setEnabled(false);
         btnApagar.setEnabled(false);
         
         // campos habilitados
        
-        jNome.setEnabled(true);
-        txtNome.setEnabled(true);
-        jSenha.setEnabled(true);
-        txtSenha.setEnabled(true);
+        ativNome(true);
+        ativSenha(true);
         jbSalvarEditar.setEnabled(true);
         
         // campos desabilitados
-        jrNome.setEnabled(false);
-        jrSenha.setEnabled(false);
-        jrAmbos.setEnabled(false);
+        ativJr(false);
 
         
     }//GEN-LAST:event_btnCriarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-        
-        jrNome.setEnabled(true);
-        jrSenha.setEnabled(true);
-        jrAmbos.setEnabled(true);
-       
-        jrNome.setEnabled(true);
-        jrSenha.setEnabled(true);
-        jrAmbos.setEnabled(true);
-        jNome.setEnabled(true);
-        txtNome.setEnabled(true);
-        jSenha.setEnabled(true);
-        txtSenha.setEnabled(true);
-        jbSalvarEditar.setEnabled(true);
+        jlOK.setVisible(false);
+        jlErro.setVisible(false);
+        cea = 'E';
+        jLabel3.setEnabled(true);
+        ativJr(true);
+        ativNome(false);
+        ativSenha(false);
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        // TODO add your handling code here:
-        
-        //botoes
-        btnCriar.setEnabled(true);
-        btnEditar.setEnabled(true);
-        btnApagar.setEnabled(true);
-        // campos
-        jrNome.setEnabled(false);
-        jrSenha.setEnabled(false);
-        jrAmbos.setEnabled(false);
-        jNome.setEnabled(false);
-        txtNome.setEnabled(false);
-        jSenha.setEnabled(false);
-        txtSenha.setEnabled(false);
-        jbSalvarEditar.setEnabled(false);
+        limpar();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
-        // TODO add your handling code here:
-        
+        jlOK.setVisible(false);
+        jlErro.setVisible(false);
+        cea = 'A';
         btnEditar.setEnabled(false);
         btnCriar.setEnabled(false);
-         
-        jNome.setEnabled(true);
-        txtNome.setEnabled(true);
-        jSenha.setEnabled(true);
-        txtSenha.setEnabled(true);
         jbSalvarEditar.setEnabled(true);
-        
-        jrNome.setEnabled(false);
-        jrSenha.setEnabled(false);
-        jrAmbos.setEnabled(false);
+        ativNome(true);
+        ativSenha(false);
+        ativJr(false);
     }//GEN-LAST:event_btnApagarActionPerformed
+
+    private void jrNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrNomeActionPerformed
+         jlOK.setVisible(false);
+         jlErro.setVisible(false);
+         jbSalvarEditar.setEnabled(true);
+        if(jrNome.isSelected()){
+            ativNome(true);
+            ativSenha(true);
+            jrSenha.setSelected(false);
+            jNovoNome.setVisible(true);
+            jSenha.setVisible(false);
+        }
+    }//GEN-LAST:event_jrNomeActionPerformed
+
+    private void jrSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrSenhaActionPerformed
+        jlOK.setVisible(false);
+        jlErro.setVisible(false);
+        jbSalvarEditar.setEnabled(true);
+        if(jrSenha.isSelected()){
+            ativNome(true);
+            ativSenha(true);
+            jrNome.setSelected(false);
+            jNovoNome.setVisible(false);
+            jSenha.setVisible(true);
+        }
+    }//GEN-LAST:event_jrSenhaActionPerformed
+
+    private void jbSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarEditarActionPerformed
+        if (cea == 'C'){        // criar
+            criarUsuario();
+        }
+        else if(cea == 'E' && jrNome.isSelected()){
+            editarNome();
+        }
+        else if(cea == 'E' && jrSenha.isSelected()){
+            editarSenha();
+        }
+        else if(cea == 'A'){
+            apagarUsuario();
+        }
+        
+    }//GEN-LAST:event_jbSalvarEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,19 +444,19 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jNome;
+    private javax.swing.JLabel jNovoNome;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jSenha;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbMenuCriar;
     private javax.swing.JButton jbSalvarEditar;
-    private javax.swing.JRadioButton jrAmbos;
+    private javax.swing.JLabel jlErro;
+    private javax.swing.JLabel jlOK;
     private javax.swing.JRadioButton jrNome;
     private javax.swing.JRadioButton jrSenha;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtNome2;
-    private javax.swing.JTextField txtNome3;
-    private javax.swing.JTextField txtNome4;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
