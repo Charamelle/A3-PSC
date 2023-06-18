@@ -24,14 +24,14 @@ public class Produto {
     protected Produto(){}
 
     // Criar produto -- protegido pra que só dê pra criar pela ProdutoDAO
-    protected Produto(String setor, String cor, String tamanho, int idEstampa, String estampa, int qtde){
+    protected Produto(String setor, String cor, String tamanho, int idEstampa, String estampa, int qtde, double preco){
         this.setor = setor;
         this.cor = cor;
         this.tamanho = tamanho;
         this.estampa = estampa;
         this.idEstampa = idEstampa;
         this.qtde = qtde;
-        this.preco = precoBase;
+        this.preco = preco;
         this.nome = gerarNome();
     }
     

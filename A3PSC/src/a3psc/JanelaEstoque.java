@@ -26,7 +26,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         jbCriar = new javax.swing.JButton();
-        jbLimpandoBotton = new javax.swing.JButton();
+        jbLimpar = new javax.swing.JButton();
         jbApagar = new javax.swing.JButton();
         jlD = new javax.swing.JLabel();
         txtCor = new javax.swing.JTextField();
@@ -78,13 +78,14 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jlErroSelecionar = new javax.swing.JLabel();
         jlErroIdInvalido = new javax.swing.JLabel();
         jlErroIdInvalido.setVisible(false);
-        jlErroSExiste = new javax.swing.JLabel();
-        jlErroSExiste.setVisible(false);
+        jlErroESExiste = new javax.swing.JLabel();
+        jlErroESExiste.setVisible(false);
         jlErroValorInvalido = new javax.swing.JLabel();
         jlErroValorInvalido.setVisible(false);
-        jlErroProdExiste = new javax.swing.JLabel();
-        jlErroProdExiste.setVisible(false);
-        jLabel1 = new javax.swing.JLabel();
+        jlErroCriarProd = new javax.swing.JLabel();
+        jlErroCriarProd.setVisible(false);
+        jlConcluido = new javax.swing.JLabel();
+        jlConcluido.setVisible(false);
         txtNomeSetor = new javax.swing.JTextField();
         jlSetorEstampa = new javax.swing.JLabel();
         jlSetorEstampa.setEnabled(false);
@@ -101,13 +102,13 @@ public class JanelaEstoque extends javax.swing.JFrame {
         });
         getContentPane().add(jbCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 80, -1));
 
-        jbLimpandoBotton.setText("Limpar");
-        jbLimpandoBotton.addActionListener(new java.awt.event.ActionListener() {
+        jbLimpar.setText("Limpar");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbLimpandoBottonActionPerformed(evt);
+                jbLimparActionPerformed(evt);
             }
         });
-        getContentPane().add(jbLimpandoBotton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 90, -1));
+        getContentPane().add(jbLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 90, -1));
 
         jbApagar.setText("Apagar");
         jbApagar.addActionListener(new java.awt.event.ActionListener() {
@@ -366,6 +367,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
 
         buttonGroup1.add(jrSetorMenu);
         jrSetorMenu.setText("Setor");
+        jrSetorMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jrSetorMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrSetorMenuActionPerformed(evt);
@@ -509,6 +511,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
 
         jbConfirmarEstSet.setText("Confirmar");
         jbConfirmarEstSet.setEnabled(false);
+        jbConfirmarEstSet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfirmarEstSetActionPerformed(evt);
+            }
+        });
         getContentPane().add(jbConfirmarEstSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 90, -1));
 
         jbLimparEstSet.setText("Limpar");
@@ -542,21 +549,21 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jlErroIdInvalido.setText("ID inserido inválido.");
         getContentPane().add(jlErroIdInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 130, -1));
 
-        jlErroSExiste.setForeground(new java.awt.Color(204, 0, 0));
-        jlErroSExiste.setText("Estampa ou Setor já existente.");
-        getContentPane().add(jlErroSExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 200, -1));
+        jlErroESExiste.setForeground(new java.awt.Color(204, 0, 0));
+        jlErroESExiste.setText("Estampa ou Setor já existente.");
+        getContentPane().add(jlErroESExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 200, -1));
 
         jlErroValorInvalido.setForeground(new java.awt.Color(204, 0, 0));
         jlErroValorInvalido.setText("Valor inserido inválido.");
         getContentPane().add(jlErroValorInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
 
-        jlErroProdExiste.setForeground(new java.awt.Color(204, 0, 0));
-        jlErroProdExiste.setText("Produto já existente.");
-        getContentPane().add(jlErroProdExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, -1, -1));
+        jlErroCriarProd.setForeground(new java.awt.Color(204, 0, 0));
+        jlErroCriarProd.setText("msg - erro");
+        getContentPane().add(jlErroCriarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, 200, -1));
 
-        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
-        jLabel1.setText("Operação concluída!");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 250, -1));
+        jlConcluido.setForeground(new java.awt.Color(0, 102, 0));
+        jlConcluido.setText("Operação concluída!");
+        getContentPane().add(jlConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 250, -1));
 
         txtNomeSetor.setEnabled(false);
         txtNomeSetor.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -635,10 +642,145 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jbLimparCriacao.setEnabled(tf);
     }
     
+    /* --------------------------------
+    * MÉTODOS - AÇÕES
+    ----------------------------------- */
     
+    // LIMPAR TUDO
+    private void limpar(){
+       
+        // desativando seções de operações
+        ativSecao1(false);
+        ativSecao2(false);
+        ativSecao3(false);
+        ativSecao4(false);
+        
+        // ativando todos os menus
+        jrProdutoMenuzinho.setEnabled(true);
+        jrSetorMenu.setEnabled(true);
+        jrEstampaMenu.setEnabled(true);
+        
+        // ativando os botões
+        jbCriar.setEnabled(true);
+        jbEditar1.setEnabled(true);
+        jbApagar.setEnabled(true);
+        jbLimpar.setEnabled(true);
+        
+        // limpando msgs de erro
+        jlErroSelecionar.setVisible(false);
+        jlErroIdInvalido.setVisible(false);
+        jlErroESExiste.setVisible(false);
+        jlErroValorInvalido.setVisible(false);
+        jlErroCriarProd.setVisible(false);
+        
+        // limpando as caixas de texto
+        txtNominho.setText("");
+        txtNomeSetor.setText("");
+        txtNomeEstampa.setText("");
+        txtQnte.setText("");
+        txtValor.setText("");
+        txtCor.setText("");
+        txtSetor.setText("");
+        txtEstampa.setText("");
+        txtpreco.setText("");
+        txtCorzinha.setText("");
+        txtQuantidade.setText("");
+    }
+    
+    // CRIAR COISAS
+    private void criarSetor(){
+        String nomeSetor = txtNomeSetor.getText();
+        if(!ProdutoDAO.checarSetor(nomeSetor)){
+            ProdutoDAO.criarSetor(nomeSetor);
+            jlErroESExiste.setVisible(true);
+            jlConcluido.setVisible(true);
+            limpar();
+        }
+        else{
+            jlErroESExiste.setVisible(true);
+        }
+    }
+    
+    private void criarEstampa(){
+        String nomeEstampa = txtNomeEstampa.getText();
+        String nomeSetor = txtNomeSetor.getText();
+        
+        if(!ProdutoDAO.checarEstampa(nomeSetor,nomeEstampa)){
+            ProdutoDAO.criarEstampa(nomeSetor, nomeEstampa);
+            jlErroESExiste.setVisible(true);
+            jlConcluido.setVisible(true);
+            limpar();
+        }
+        else{
+            jlErroESExiste.setVisible(true);
+        }
+    
+    }
+    
+    private void criarProduto(){
+        // pegando valores
+        String setor = txtSetor.getText();
+        String estampa = txtEstampa.getText();
+        String cor = txtCorzinha.getText();
+        int qtde = 0;
+        double preco = 0;
+        
+        //setando qtde
+        if(txtQuantidade.getText().isEmpty()){
+            qtde = 0;
+        }
+        else{
+            qtde = Integer.parseInt(txtQuantidade.getText());
+        }
+        // setando preço
+        if(txtpreco.getText().isEmpty()){
+            preco = Produto.precoBase;
+        }
+        else{
+            preco = Double.parseDouble(txtpreco.getText());
+        }
+        
+        // testar setor, testar estampa, ver se já existe o produto
+        
+        if(!ProdutoDAO.checarSetor(setor)){                                     // se o setor nn existir
+            jlErroCriarProd.setText("Setor inexistente");
+            jlErroCriarProd.setVisible(true);
+        }
+        else{
+            if(!ProdutoDAO.checarEstampa(setor, estampa)){                      // se a estampa nn existir
+            jlErroCriarProd.setText("Estampa inexistente");
+            jlErroCriarProd.setVisible(true);
+            }
+            else{
+                int idEstampa = ProdutoDAO.getIdEstampa(setor, estampa);
+                if(ProdutoDAO.checarProduto(setor, idEstampa, cor)){            // se o produto existir
+                    jlErroCriarProd.setText("Produto já existe");
+                    jlErroCriarProd.setVisible(true);
+                }
+                else{
+                    ProdutoDAO.criarProduto(setor, cor, estampa, qtde, preco);
+                    jlConcluido.setVisible(true);
+                    limpar();
+                }
+            
+            
+            }
+            
+        }
+        
+        
+    }
+
+    private void editarSetor(){}
+    private void editarEstampa(){}
+    private void editarProduto(){}
+    
+    private void apagarSetor(){}
+    private void apagarEstampa(){}
+    private void apagarProduto(){}
     
     private void jbCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCriarActionPerformed
-
+        cea = 'C';
         switch (pes) {
             case 'P':
                 // CRIAR PRODUTOS
@@ -684,7 +826,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCriarActionPerformed
 
     private void jbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbApagarActionPerformed
-        
+        cea = 'A';
         if(pes == 'P' || pes == 'E' || pes == 'S'){
             ativSecao1(true);
             ativSecao2(false);
@@ -761,7 +903,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jrCorActionPerformed
 
     private void jbConfirmaProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmaProxActionPerformed
-        // TODO add your handling code here:
+        criarProduto();
     }//GEN-LAST:event_jbConfirmaProxActionPerformed
 
     private void txtNomeEstampaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomeEstampaAncestorAdded
@@ -863,10 +1005,10 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jrProdutoMenuzinho.setEnabled(false);
     }//GEN-LAST:event_jrSetorMenuActionPerformed
 
-    private void jbLimpandoBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpandoBottonActionPerformed
-
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        limpar();
         pes = '-';
-        
+        /*
         jrProdutoMenuzinho.setEnabled(true);
         jrSetorMenu.setEnabled(true);
         jrEstampaMenu.setEnabled(true);
@@ -878,9 +1020,9 @@ public class JanelaEstoque extends javax.swing.JFrame {
         ativSecao1(false);
         ativSecao2(false);
         ativSecao3(false);
-        ativSecao4(false);
+        ativSecao4(false);*/
                 
-    }//GEN-LAST:event_jbLimpandoBottonActionPerformed
+    }//GEN-LAST:event_jbLimparActionPerformed
 
     private void jbLimpandoBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpandoBotton1ActionPerformed
         // TODO add your handling code here:
@@ -897,7 +1039,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLimparEditActionPerformed
 
     private void jbEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditar1ActionPerformed
-
+        cea = 'E';
         switch (pes) {
             case 'P':
                 // PRA EDITAR PRODUTO
@@ -1012,6 +1154,15 @@ public class JanelaEstoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeSetorActionPerformed
 
+    private void jbConfirmarEstSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarEstSetActionPerformed
+        if (pes == 'S' && cea == 'C'){      // CRIAR SETOR
+            criarSetor();
+        }
+        else if(pes == 'E' && cea == 'C'){  // CRIAR ESTAMPA
+            criarEstampa();
+        }
+    }//GEN-LAST:event_jbConfirmarEstSetActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1052,7 +1203,6 @@ public class JanelaEstoque extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1063,8 +1213,8 @@ public class JanelaEstoque extends javax.swing.JFrame {
     private javax.swing.JButton jbConfirmarSetorzinho;
     private javax.swing.JButton jbCriar;
     private javax.swing.JButton jbEditar1;
-    private javax.swing.JButton jbLimpandoBotton;
     private javax.swing.JButton jbLimpandoBotton1;
+    private javax.swing.JButton jbLimpar;
     private javax.swing.JButton jbLimparCriacao;
     private javax.swing.JButton jbLimparEdit;
     private javax.swing.JButton jbLimparEstSet;
@@ -1072,12 +1222,13 @@ public class JanelaEstoque extends javax.swing.JFrame {
     private javax.swing.JButton jbMenuVoltEditzinho;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbVoltandojr;
+    private javax.swing.JLabel jlConcluido;
     private javax.swing.JLabel jlCorzinha;
     private javax.swing.JLabel jlCriarProduto;
     private javax.swing.JLabel jlD;
+    private javax.swing.JLabel jlErroCriarProd;
+    private javax.swing.JLabel jlErroESExiste;
     private javax.swing.JLabel jlErroIdInvalido;
-    private javax.swing.JLabel jlErroProdExiste;
-    private javax.swing.JLabel jlErroSExiste;
     private javax.swing.JLabel jlErroSelecionar;
     private javax.swing.JLabel jlErroValorInvalido;
     private javax.swing.JLabel jlEstampinha;

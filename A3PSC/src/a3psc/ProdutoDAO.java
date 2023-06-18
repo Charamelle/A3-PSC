@@ -34,79 +34,66 @@ public class ProdutoDAO extends Produto {
      ---------------------------------------*/
 
     // MÉTODO: criar/adicionar novo produto à loja                                
-    public static void criarProduto(String setor, String cor, String estampa, int qtde){
+    public static void criarProduto(String setor, String cor, String estampa, int qtde, double preco){
         setPos();
         String sql = "INSERT INTO PRODUTO (NOMEPROD, SETOR, COR, TAMANHO, ESTAMPA, IDESTAMPA, QTDE, PRECO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         int idEstampa = getIdEstampa(setor, estampa);        
-        
-        if(!checarProduto(setor, idEstampa, cor)){
-            if (idEstampa != -1){
-                for (int i = 0; i<3; i++){                                              
-                    ProdutoDAO.pos++;
-                    String tamanho = Produto.getTamanho(i);
-                    produtos[pos] = new Produto(setor, cor, tamanho, idEstampa, estampa, qtde);
+        if (idEstampa != -1){
+            for (int i = 0; i<3; i++){                                              
+                ProdutoDAO.pos++;
+                String tamanho = Produto.getTamanho(i);
+                produtos[pos] = new Produto(setor, cor, tamanho, idEstampa, estampa, qtde, preco);
 
-                    try {
-                        PreparedStatement ps = con.prepareStatement(sql);
-                        ps.setString(1,produtos[pos].nome);
-                        ps.setString(2,produtos[pos].setor);
-                        ps.setString(3,produtos[pos].cor);
-                        ps.setString(4,produtos[pos].tamanho);
-                        ps.setString(5,produtos[pos].estampa);
-                        ps.setInt(6,produtos[pos].idEstampa);
-                        ps.setInt(7,produtos[pos].qtde);
-                        ps.setDouble(8,produtos[pos].preco);
-                        ps.execute();
+                try {
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ps.setString(1,produtos[pos].nome);
+                    ps.setString(2,produtos[pos].setor);
+                    ps.setString(3,produtos[pos].cor);
+                    ps.setString(4,produtos[pos].tamanho);
+                    ps.setString(5,produtos[pos].estampa);
+                    ps.setInt(6,produtos[pos].idEstampa);
+                    ps.setInt(7,produtos[pos].qtde);
+                    ps.setDouble(8,produtos[pos].preco);
+                    ps.execute();
 
-                        ps.close();                                                 // precisa sempre fechar no final, né mores
-                    }
-                    catch (SQLException ex) {
-                        Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    ps.close();                                                 // precisa sempre fechar no final, né mores
+                }
+                catch (SQLException ex) {
+                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        } else {
-            System.out.println("Esse produto ja existe");
-        }
+        } 
     }
     
     
     // MÉTODO: criar uma nova estampa                                           
     public static void criarEstampa(String setor, String nomeEstampa){
         
-        if (!checarEstampa(setor,nomeEstampa)){
-            try { 
-                String query = "INSERT INTO ESTAMPA (SETORESTAMPA, NOMEESTAMPA) VALUES (?, ?)";
-                PreparedStatement ps = con.prepareStatement(query);
-                ps.setString(1, setor);
-                ps.setString(2, nomeEstampa);
-                ps.execute();
-                ps.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-        } else {
-            System.out.println("Essa estampa ja existe");
-        }
+        try { 
+            String query = "INSERT INTO ESTAMPA (SETORESTAMPA, NOMEESTAMPA) VALUES (?, ?)";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, setor);
+            ps.setString(2, nomeEstampa);
+            ps.execute();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
 
     // MÉTODO: criar um novo setor                                           
     public static void criarSetor(String setor){
         
-        if (!checarSetor(setor)){
-            try { 
-                String query = "INSERT INTO SETOR (nomesetor) VALUE (?)";
-                PreparedStatement ps = con.prepareStatement(query);
-                ps.setString(1, setor);
-                ps.execute();
-                ps.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-        } else {
-            System.out.println("Esse setor ja existe");
-        }
+        try { 
+            String query = "INSERT INTO SETOR (nomesetor) VALUE (?)";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, setor);
+            ps.execute();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
 
