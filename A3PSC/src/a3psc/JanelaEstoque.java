@@ -1,16 +1,10 @@
 package a3psc;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Adrielle
- */
 public class JanelaEstoque extends javax.swing.JFrame {
 
+    private char pes;       // produto, estampa, setor
+    private char cea;       // criar, editar, apagar
+    
     /**
      * Creates new form JanelaProduto
      */
@@ -36,9 +30,9 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jbApagar = new javax.swing.JButton();
         jlD = new javax.swing.JLabel();
         txtCor = new javax.swing.JTextField();
-        jlEstampa = new javax.swing.JLabel();
+        jlNomeSetor = new javax.swing.JLabel();
         txtNome1 = new javax.swing.JTextField();
-        jlNom = new javax.swing.JLabel();
+        jlNomeEstampa = new javax.swing.JLabel();
         jlProdutinhoEscolher = new javax.swing.JLabel();
         jrqtde = new javax.swing.JRadioButton();
         jrPreco = new javax.swing.JRadioButton();
@@ -48,7 +42,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jlSetor = new javax.swing.JLabel();
         jlEstampinha = new javax.swing.JLabel();
         jlPreco = new javax.swing.JLabel();
-        txtNomezinhoEst = new javax.swing.JTextField();
+        txtNomeEstampa = new javax.swing.JTextField();
         txtQuantidade = new javax.swing.JTextField();
         txtEstampa = new javax.swing.JTextField();
         txtpreco = new javax.swing.JTextField();
@@ -79,7 +73,21 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jbConfirmarEstSet = new javax.swing.JButton();
         jbLimparEstSet = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtConsulta = new javax.swing.JTextPane();
+        jbPesquisar = new javax.swing.JButton();
+        jlErroSelecionar = new javax.swing.JLabel();
+        jlErroIdInvalido = new javax.swing.JLabel();
+        jlErroIdInvalido.setVisible(false);
+        jlErroSExiste = new javax.swing.JLabel();
+        jlErroSExiste.setVisible(false);
+        jlErroValorInvalido = new javax.swing.JLabel();
+        jlErroValorInvalido.setVisible(false);
+        jlErroProdExiste = new javax.swing.JLabel();
+        jlErroProdExiste.setVisible(false);
+        jLabel1 = new javax.swing.JLabel();
+        txtNomeSetor = new javax.swing.JTextField();
+        jlSetorEstampa = new javax.swing.JLabel();
+        jlSetorEstampa.setEnabled(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -102,7 +110,6 @@ public class JanelaEstoque extends javax.swing.JFrame {
         getContentPane().add(jbLimpandoBotton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 90, -1));
 
         jbApagar.setText("Apagar");
-        jbApagar.setEnabled(false);
         jbApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbApagarActionPerformed(evt);
@@ -131,9 +138,9 @@ public class JanelaEstoque extends javax.swing.JFrame {
         });
         getContentPane().add(txtCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 70, -1));
 
-        jlEstampa.setText("Estampa/Setor:");
-        jlEstampa.setEnabled(false);
-        getContentPane().add(jlEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        jlNomeSetor.setText("Setor:");
+        jlNomeSetor.setEnabled(false);
+        getContentPane().add(jlNomeSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, 20));
 
         txtNome1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -149,11 +156,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtNome1ActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 230, -1));
+        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 170, -1));
 
-        jlNom.setText("Nome:");
-        jlNom.setEnabled(false);
-        getContentPane().add(jlNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        jlNomeEstampa.setText("Estampa:");
+        jlNomeEstampa.setEnabled(false);
+        getContentPane().add(jlNomeEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 20));
 
         jlProdutinhoEscolher.setText("Produtos:");
         jlProdutinhoEscolher.setEnabled(false);
@@ -214,22 +221,22 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jlPreco.setEnabled(false);
         getContentPane().add(jlPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 600, 40, -1));
 
-        txtNomezinhoEst.setEnabled(false);
-        txtNomezinhoEst.addAncestorListener(new javax.swing.event.AncestorListener() {
+        txtNomeEstampa.setEnabled(false);
+        txtNomeEstampa.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                txtNomezinhoEstAncestorAdded(evt);
+                txtNomeEstampaAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        txtNomezinhoEst.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeEstampa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomezinhoEstActionPerformed(evt);
+                txtNomeEstampaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNomezinhoEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 270, -1));
+        getContentPane().add(txtNomeEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 270, -1));
 
         txtQuantidade.setEnabled(false);
         txtQuantidade.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -334,7 +341,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         getContentPane().add(jbConfirmarSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 90, -1));
 
         jLabel12.setText("Filtrar Pesquisa:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         txtNominho.setEnabled(false);
         txtNominho.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -476,7 +483,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jrProdutoMenuzinhoActionPerformed(evt);
             }
         });
-        getContentPane().add(jrProdutoMenuzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 70, -1));
+        getContentPane().add(jrProdutoMenuzinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 90, -1));
 
         jlCriarProduto.setText("Criar Produto:");
         jlCriarProduto.setEnabled(false);
@@ -513,90 +520,181 @@ public class JanelaEstoque extends javax.swing.JFrame {
         });
         getContentPane().add(jbLimparEstSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 90, -1));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        txtConsulta.setEditable(false);
+        jScrollPane1.setViewportView(txtConsulta);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 230, 550));
+
+        jbPesquisar.setText("🔎");
+        jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPesquisarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 60, 20));
+
+        jlErroSelecionar.setForeground(new java.awt.Color(204, 0, 0));
+        jlErroSelecionar.setText("Selecione uma das seguintes opções primeiro:");
+        getContentPane().add(jlErroSelecionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 340, 20));
+        jlErroSelecionar.setVisible(false);
+
+        jlErroIdInvalido.setForeground(new java.awt.Color(204, 0, 0));
+        jlErroIdInvalido.setText("ID inserido inválido.");
+        getContentPane().add(jlErroIdInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 130, -1));
+
+        jlErroSExiste.setForeground(new java.awt.Color(204, 0, 0));
+        jlErroSExiste.setText("Estampa ou Setor já existente.");
+        getContentPane().add(jlErroSExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 200, -1));
+
+        jlErroValorInvalido.setForeground(new java.awt.Color(204, 0, 0));
+        jlErroValorInvalido.setText("Valor inserido inválido.");
+        getContentPane().add(jlErroValorInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
+
+        jlErroProdExiste.setForeground(new java.awt.Color(204, 0, 0));
+        jlErroProdExiste.setText("Produto já existente.");
+        getContentPane().add(jlErroProdExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 640, -1, -1));
+
+        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel1.setText("Operação concluída!");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 250, -1));
+
+        txtNomeSetor.setEnabled(false);
+        txtNomeSetor.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                txtNomeSetorAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        txtNomeSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeSetorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNomeSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 270, -1));
+
+        jlSetorEstampa.setText("Nome Setor/Estampa");
+        getContentPane().add(jlSetorEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /* --------------------------------
+    * MÉTODOS - ATIVAR/DESATIVAR CUSTOM
+    ----------------------------------- */
     
-   
+    private void ativSecao1(boolean tf){
+        jlD.setEnabled(tf);
+        txtNominho.setEnabled(tf);
+        jbConfirmarSet.setEnabled(tf);
+        jbLimparEdit.setEnabled(tf); 
+    }
+    
+    private void ativSecao2(boolean tf){
+        jlNomeSetor.setEnabled(tf);
+        jlNomeEstampa.setEnabled(tf);
+        jlSetorEstampa.setEnabled(tf);
+        txtNomeEstampa.setEnabled(tf);
+        txtNomeSetor.setEnabled(tf);
+        jbConfirmarEstSet.setEnabled(tf);
+        jbLimparEstSet.setEnabled(tf);
+    }
+    
+    private void ativSecao3(boolean tf){
+        jlNewQnte.setEnabled(tf);
+        jlValor.setEnabled(tf);
+        jlNovaCor.setEnabled(tf);
+        txtQnte.setEnabled(tf);
+        txtValor.setEnabled(tf);
+        txtCor.setEnabled(tf);
+        jlProdutinhoEscolher.setEnabled(tf);
+        jrqtde.setEnabled(tf);
+        jrPreco.setEnabled(tf);
+        jrCor.setEnabled(tf);
+        jbMenuVoltEditzinho.setEnabled(tf);
+        jbConfirmarSetorzinho.setEnabled(tf);
+        jbVoltandojr.setEnabled(tf);
+    
+    }
+    
+    private void ativSecao4(boolean tf){
+        jlCriarProduto.setEnabled(tf);
+        jlSetor.setEnabled(tf);
+        jlEstampinha.setEnabled(tf);
+        jlPreco.setEnabled(tf);
+        jlCorzinha.setEnabled(tf);
+        jlQuantidade.setEnabled(tf);
+        txtSetor.setEnabled(tf);
+        txtEstampa.setEnabled(tf);
+        txtpreco.setEnabled(tf);
+        txtCorzinha.setEnabled(tf);
+        txtQuantidade.setEnabled(tf);
+        jbConfirmaProx.setEnabled(tf);
+        jbLimparCriacao.setEnabled(tf);
+    }
+    
+    
+    
     private void jbCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCriarActionPerformed
-        // TODO add your handling code here:
-        //aqui so ficam habilitados os de estampa  e nome e confirma
-        jlEstampa.setEnabled(false);
-        jlNom.setEnabled(false);
-        jbApagar.setEnabled(true);
-        
-        jlCriarProduto.setEnabled(true);
-        jlSetor.setEnabled(true);
-        txtSetor.setEnabled(true);
-        jlEstampinha.setEnabled(true);
-        txtEstampa.setEnabled(true);
-        jlPreco.setEnabled(true);
-        txtpreco.setEnabled(true);
-        jlCorzinha.setEnabled(true);
-        txtCorzinha.setEnabled(true);
-        jlQuantidade.setEnabled(true);
-        txtQuantidade.setEnabled(true);
-        jbMenuCriar.setEnabled(true);
-        jbConfirmaProx.setEnabled(true);
-        jbLimparCriacao.setEnabled(true);
 
-        jbConfirmarEstSet.setEnabled(false);
-        jbLimparEstSet.setEnabled(false);
-        
-        txtNomezinhoEst.setEnabled(false);
-        jlProdutinhoEscolher.setEnabled(false);
-        
-        //inativa id
-        jlD.setEnabled(false);
-        txtNominho.setEnabled(false);
-        jbConfirmarSet.setEnabled(false);
-        jbLimparEdit.setEnabled(false);
-        
-        // editar inativo
-        jrqtde.setEnabled(false); 
-        jrPreco.setEnabled(false); 
-        jrCor.setEnabled(false); 
-        jbMenuVoltEditzinho.setEnabled(false); 
-        jbConfirmarSetorzinho.setEnabled(false); 
-        jbVoltandojr.setEnabled(false); 
-        
+        switch (pes) {
+            case 'P':
+                // CRIAR PRODUTOS
+                // desativar: jr setor, estampa
+                jrSetorMenu.setEnabled(false);
+                jrEstampaMenu.setEnabled(false);
+                // desativar: seções 1, 2 e 3
+                ativSecao1(false);
+                ativSecao2(false);
+                ativSecao3(false);
+                // ativar: seção 4
+                ativSecao4(true);
+                jlErroSelecionar.setVisible(false);
+                break;
+            case 'E':
+                //CRIAR ESTAMPA
+                // desativar: seção 1, 3 e 4
+                ativSecao1(false);
+                ativSecao3(false);
+                ativSecao4(false);
+                // ativar: seção 2
+                ativSecao2(true);
+                jlErroSelecionar.setVisible(false);
+                break;
+            case 'S':
+                // CRIAR SETOR
+                // desativar: seção 1, 3 e 4
+                ativSecao1(false);
+                ativSecao3(false);
+                ativSecao4(false);
+                // ativar: seção 2 (-nome estampa)
+                ativSecao2(true);
+                jlNomeEstampa.setEnabled(false);
+                txtNomeEstampa.setEnabled(false);
+                jlErroSelecionar.setVisible(false);
+                break;
+            default:
+                jlErroSelecionar.setVisible(true);
+                break;
+        }
+                
+                
     }//GEN-LAST:event_jbCriarActionPerformed
 
     private void jbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbApagarActionPerformed
-        // TODO add your handling code here:
-        // somente o id e o confirma || esse vai excluir do db o que fora criado
-        jlEstampa.setEnabled(true);
-        jlNom.setEnabled(true);
-        txtNomezinhoEst.setEnabled(true);
-        jbLimparCriacao.setEnabled(true);
-        jbCriar.setEnabled(true);
-        jbConfirmarEstSet.setEnabled(true);
-        jbLimparEstSet.setEnabled(true);
-        jbLimparCriacao.setEnabled(false);
-        jbMenuCriar.setEnabled(true);
         
-        // editar inativo
-        jrqtde.setEnabled(false); 
-        jrPreco.setEnabled(false); 
-        jrCor.setEnabled(false); 
-        
-        jbMenuVoltEditzinho.setEnabled(false); 
-        jbConfirmarSetorzinho.setEnabled(false); 
-        jbVoltandojr.setEnabled(false); 
-        
-        // parte do ID
-        jlD.setEnabled(true); 
-        txtNominho.setEnabled(true); 
-        jbConfirmarSet.setEnabled(true); 
-        jbLimparEdit.setEnabled(true); 
-        
-        jlProdutinhoEscolher.setEnabled(false);
-
-        
+        if(pes == 'P' || pes == 'E' || pes == 'S'){
+            ativSecao1(true);
+            ativSecao2(false);
+            ativSecao3(false);
+            ativSecao4(false);
+            jlErroSelecionar.setVisible(false);
+        } 
+        else {
+            jlErroSelecionar.setVisible(true);
+        }
     }//GEN-LAST:event_jbApagarActionPerformed
 
     private void txtCorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtCorAncestorAdded
@@ -666,13 +764,13 @@ public class JanelaEstoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbConfirmaProxActionPerformed
 
-    private void txtNomezinhoEstAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomezinhoEstAncestorAdded
+    private void txtNomeEstampaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomeEstampaAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomezinhoEstAncestorAdded
+    }//GEN-LAST:event_txtNomeEstampaAncestorAdded
 
-    private void txtNomezinhoEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomezinhoEstActionPerformed
+    private void txtNomeEstampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeEstampaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomezinhoEstActionPerformed
+    }//GEN-LAST:event_txtNomeEstampaActionPerformed
 
     private void txtQuantidadeAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtQuantidadeAncestorAdded
         // TODO add your handling code here:
@@ -727,8 +825,8 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNominhoActionPerformed
 
     private void jrEstampaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrEstampaMenuActionPerformed
-        // TODO add your handling code here:
-        
+        // Jr - Estampa
+        pes = 'E';
         jrSetorMenu.setEnabled(false);
         jrProdutoMenuzinho.setEnabled(false);
     }//GEN-LAST:event_jrEstampaMenuActionPerformed
@@ -759,15 +857,16 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jbMenuCriarActionPerformed
 
     private void jrSetorMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrSetorMenuActionPerformed
-        // TODO add your handling code here:
-      
+        // Jradio - Setor
+        pes = 'S';
         jrEstampaMenu.setEnabled(false);
         jrProdutoMenuzinho.setEnabled(false);
     }//GEN-LAST:event_jrSetorMenuActionPerformed
 
     private void jbLimpandoBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpandoBottonActionPerformed
-        // TODO add your handling code here:
-       
+
+        pes = '-';
+        
         jrProdutoMenuzinho.setEnabled(true);
         jrSetorMenu.setEnabled(true);
         jrEstampaMenu.setEnabled(true);
@@ -775,43 +874,11 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jbEditar1.setEnabled(true);
         jbConfirmarSet.setEnabled(true);
         jlProdutinhoEscolher.setEnabled(true);
-        jrqtde.setEnabled(false);
-        jrPreco.setEnabled(false);
-        jrCor.setEnabled(false);
-        jlValor.setEnabled(false);
-        txtValor.setEnabled(false);
-        jlNovaCor.setEnabled(false);
-        jlNewQnte.setEnabled(false);
-        txtQnte.setEnabled(false);
-        jlD.setEnabled(false);
-        txtNominho.setEnabled(false);
-        jlSetor.setEnabled(false);
-        txtSetor.setEnabled(false);
-        jlEstampinha.setEnabled(false);
-        txtEstampa.setEnabled(false);
-        jlPreco.setEnabled(false);
-        txtpreco.setEnabled(false);
-        jlCorzinha.setEnabled(false);
-        txtCorzinha.setEnabled(false);
-        jlQuantidade.setEnabled(false);
-        txtQuantidade.setEnabled(false);
-        jbMenuCriar.setEnabled(true);
-        jbConfirmaProx.setEnabled(false);
-        jbConfirmarSet.setEnabled(false);
-        txtCor.setEnabled(false);
-        txtNomezinhoEst.setEnabled(false);
-        jlNom.setEnabled(false);
-        jlProdutinhoEscolher.setEnabled(false);
         
-        jbLimparEdit.setEnabled(false);
-        jbConfirmarEstSet.setEnabled(false);
-        jbLimparEstSet.setEnabled(false);
-        
-        jbLimparCriacao.setEnabled(false);
-        
-        jbMenuVoltEditzinho.setEnabled(false);
-        jbConfirmarSetorzinho.setEnabled(false);
-        jbVoltandojr.setEnabled(false);
+        ativSecao1(false);
+        ativSecao2(false);
+        ativSecao3(false);
+        ativSecao4(false);
                 
     }//GEN-LAST:event_jbLimpandoBottonActionPerformed
 
@@ -830,52 +897,55 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLimparEditActionPerformed
 
     private void jbEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditar1ActionPerformed
-        // TODO add your handling code here:
-        txtNomezinhoEst.setEnabled(false);
-        jbMenuVoltEditzinho.setEnabled(true);
-        jbConfirmarSet.setEnabled(false);       
-        jlProdutinhoEscolher.setEnabled(true); 
-        jrqtde.setEnabled(true); 
-        jrPreco.setEnabled(true); 
-        jrCor.setEnabled(true); 
-        jlValor.setEnabled(false); 
-        txtValor.setEnabled(false); 
-        jlNovaCor.setEnabled(false); 
-        txtCor.setEnabled(false); 
-        jlNewQnte.setEnabled(false); 
-        txtQnte.setEnabled(false); 
-        jbEditar1.setEnabled(true);
-        jbApagar.setEnabled(true);
-        jbConfirmarSetorzinho.setEnabled(true);
-        jbVoltandojr.setEnabled(true);
-        
-        // parte de criar precisa desativar
-        jlCriarProduto.setEnabled(false);
-        jlSetor.setEnabled(false);
-        txtSetor.setEnabled(false);
-        jlEstampinha.setEnabled(false);
-        txtEstampa.setEnabled(false);
-        jlPreco.setEnabled(false);
-        txtpreco.setEnabled(false);
-        jlCorzinha.setEnabled(false);
-        txtCorzinha.setEnabled(false);
-        jlQuantidade.setEnabled(false);
-        txtQuantidade.setEnabled(false);
-        jbMenuCriar.setEnabled(false);
-        jbConfirmaProx.setEnabled(false);
-        jbLimparCriacao.setEnabled(false);
-        
-        //visibilidade do id
-        
-        jlD.setEnabled(false);
-        txtNominho.setEnabled(false);
-        jbConfirmarSet.setEnabled(false);
-        jbLimparEdit.setEnabled(false);
-        
-        jbConfirmarEstSet.setEnabled(false);
-        jbLimparEstSet.setEnabled(false);
-        jlEstampa.setEnabled(false);
-        jlNom.setEnabled(false);
+
+        switch (pes) {
+            case 'P':
+                // PRA EDITAR PRODUTO
+                // desativar: seções 2 e 4
+                ativSecao2(false);
+                ativSecao4(false);
+                // ativar: ID
+                jlD.setEnabled(true);
+                txtNominho.setEnabled(true);
+                // ... e metade da seção 3
+                jlProdutinhoEscolher.setEnabled(true);
+                jrqtde.setEnabled(true);
+                jrPreco.setEnabled(true);
+                jrCor.setEnabled(true);
+                jbMenuVoltEditzinho.setEnabled(true);
+                jbConfirmarSetorzinho.setEnabled(true);
+                jbVoltandojr.setEnabled(true);
+                jlErroSelecionar.setVisible(false);
+                break;
+            case 'E':
+                // desativar seções 3 e 4
+                ativSecao3(false);
+                ativSecao4(false);
+                // ativar ID + seção 2 (-nome setor)
+                jlD.setEnabled(true);
+                txtNominho.setEnabled(true);
+                ativSecao2(true);
+                jlNomeSetor.setEnabled(false);
+                txtNomeSetor.setEnabled(false);
+                
+                jlErroSelecionar.setVisible(false);
+                break;
+            case 'S':
+                // desativar: seções 3 e 4
+                ativSecao3(false);
+                ativSecao4(false);
+                // ativar: ID + seção 2 (-nome estampa)
+                jlD.setEnabled(true);
+                txtNominho.setEnabled(true);
+                ativSecao2(true);
+                jlNomeEstampa.setEnabled(false);
+                txtNomeEstampa.setEnabled(false);
+                jlErroSelecionar.setVisible(false);
+                break;
+            default:
+                jlErroSelecionar.setVisible(true);
+                break;
+        }
     }//GEN-LAST:event_jbEditar1ActionPerformed
 
     private void jbLimparCriacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparCriacaoActionPerformed
@@ -888,7 +958,8 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLimparCriacaoActionPerformed
 
     private void jrProdutoMenuzinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrProdutoMenuzinhoActionPerformed
-        // TODO add your handling code here:
+        // Jradio -- Produto
+        pes = 'P';
         jrEstampaMenu.setEnabled(false);
         jrSetorMenu.setEnabled(false);
 
@@ -926,8 +997,20 @@ public class JanelaEstoque extends javax.swing.JFrame {
 
     private void jbLimparEstSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparEstSetActionPerformed
         // TODO add your handling code here:
-        txtNomezinhoEst.setText("");
+        txtNomeEstampa.setText("");
     }//GEN-LAST:event_jbLimparEstSetActionPerformed
+
+    private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbPesquisarActionPerformed
+
+    private void txtNomeSetorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomeSetorAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeSetorAncestorAdded
+
+    private void txtNomeSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeSetorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeSetorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -969,10 +1052,10 @@ public class JanelaEstoque extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton jbApagar;
     private javax.swing.JButton jbConfirmaProx;
     private javax.swing.JButton jbConfirmarEstSet;
@@ -987,19 +1070,26 @@ public class JanelaEstoque extends javax.swing.JFrame {
     private javax.swing.JButton jbLimparEstSet;
     private javax.swing.JButton jbMenuCriar;
     private javax.swing.JButton jbMenuVoltEditzinho;
+    private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbVoltandojr;
     private javax.swing.JLabel jlCorzinha;
     private javax.swing.JLabel jlCriarProduto;
     private javax.swing.JLabel jlD;
-    private javax.swing.JLabel jlEstampa;
+    private javax.swing.JLabel jlErroIdInvalido;
+    private javax.swing.JLabel jlErroProdExiste;
+    private javax.swing.JLabel jlErroSExiste;
+    private javax.swing.JLabel jlErroSelecionar;
+    private javax.swing.JLabel jlErroValorInvalido;
     private javax.swing.JLabel jlEstampinha;
     private javax.swing.JLabel jlNewQnte;
-    private javax.swing.JLabel jlNom;
+    private javax.swing.JLabel jlNomeEstampa;
+    private javax.swing.JLabel jlNomeSetor;
     private javax.swing.JLabel jlNovaCor;
     private javax.swing.JLabel jlPreco;
     private javax.swing.JLabel jlProdutinhoEscolher;
     private javax.swing.JLabel jlQuantidade;
     private javax.swing.JLabel jlSetor;
+    private javax.swing.JLabel jlSetorEstampa;
     private javax.swing.JLabel jlValor;
     private javax.swing.JRadioButton jrCor;
     private javax.swing.JRadioButton jrEstampaMenu;
@@ -1007,11 +1097,13 @@ public class JanelaEstoque extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrProdutoMenuzinho;
     private javax.swing.JRadioButton jrSetorMenu;
     private javax.swing.JRadioButton jrqtde;
+    private javax.swing.JTextPane txtConsulta;
     private javax.swing.JTextField txtCor;
     private javax.swing.JTextField txtCorzinha;
     private javax.swing.JTextField txtEstampa;
     private javax.swing.JTextField txtNome1;
-    private javax.swing.JTextField txtNomezinhoEst;
+    private javax.swing.JTextField txtNomeEstampa;
+    private javax.swing.JTextField txtNomeSetor;
     private javax.swing.JTextField txtNominho;
     private javax.swing.JTextField txtQnte;
     private javax.swing.JTextField txtQuantidade;

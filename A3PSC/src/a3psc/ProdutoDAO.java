@@ -34,7 +34,7 @@ public class ProdutoDAO extends Produto {
      ---------------------------------------*/
 
     // MÉTODO: criar/adicionar novo produto à loja                                
-    public static void addProduto(String setor, String cor, String estampa, int qtde){
+    public static void criarProduto(String setor, String cor, String estampa, int qtde){
         setPos();
         String sql = "INSERT INTO PRODUTO (NOMEPROD, SETOR, COR, TAMANHO, ESTAMPA, IDESTAMPA, QTDE, PRECO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         int idEstampa = getIdEstampa(setor, estampa);        
