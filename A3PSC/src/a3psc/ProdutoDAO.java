@@ -583,11 +583,41 @@ public class ProdutoDAO extends Produto {
         
     }
     
-    public static void infoToString(){
+    public static String infoToString(){
         String txt = "";
-        //pegar setor - NOME
-        //pegar estampas --> NOME - ID - SETOR
-        // pegar produto --> NOME - ID
+        String setor = "~*~ SETORES ~*~";
+        String estampa = "~*~ ESTAMPAS ~*~";
+        String produto = "~*~ PRODUTOS ~*~";
+        try {
+            //pegando os produtos
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM produto");
+            while(rs.next()){
+                produto = produto+"\n[ID: "+rs.getInt("idProd") + "]   "
+                        + rs.getString("nomeProd") + "  [QTDE: "+rs.getInt("qtde")+"]  "
+                        + "[R$ " + rs.getDouble("preco")+"]";
+            }
+            
+            //pegando as estampas
+            ResultSet rs2 = stmt.executeQuery("SELECT * FROM ESTAMPA");
+            while(rs2.next()){
+                estampa = estampa+"\n[ID: "+rs2.getInt("idEstampa") + "]  "
+                        + rs2.getString("nomeEstampa")+"   [SETOR: "
+                        + rs2.getString("setorEstampa") + "]";
+            }
+            
+            //pegando os setores
+            ResultSet rs3 = stmt.executeQuery("SELECT nomesetor FROM SETOR");
+            while(rs3.next()){
+                setor = setor+"\n"+rs3.getString(1);
+            }
+           
+            txt = setor+"\n\n"+estampa+"\n\n"+produto;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return txt;
     }
 
     

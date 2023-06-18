@@ -75,6 +75,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jbLimparEstSet = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtConsulta = new javax.swing.JTextPane();
+        txtConsulta.setText(ProdutoDAO.infoToString());
         jbPesquisar = new javax.swing.JButton();
         jlErroSelecionar = new javax.swing.JLabel();
         jlErroIdInvalido = new javax.swing.JLabel();
@@ -90,6 +91,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         txtNomeSetor = new javax.swing.JTextField();
         jlSetorEstampa = new javax.swing.JLabel();
         jlSetorEstampa.setEnabled(false);
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -158,7 +160,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 txtNome1ActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 170, -1));
+        getContentPane().add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 220, -1));
 
         jlNomeEstampa.setText("Estampa:");
         jlNomeEstampa.setEnabled(false);
@@ -343,7 +345,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         getContentPane().add(jbConfirmarSet, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 90, -1));
 
         jLabel12.setText("Filtrar Pesquisa:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, -1));
 
         txtNominho.setEnabled(false);
         txtNominho.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -531,7 +533,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         txtConsulta.setEditable(false);
         jScrollPane1.setViewportView(txtConsulta);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 230, 550));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 510, 550));
 
         jbPesquisar.setText("🔎");
         jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -539,7 +541,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
                 jbPesquisarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 60, 20));
+        getContentPane().add(jbPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 70, -1));
 
         jlErroSelecionar.setForeground(new java.awt.Color(204, 0, 0));
         jlErroSelecionar.setText("Selecione uma das seguintes opções primeiro:");
@@ -586,9 +588,18 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jlSetorEstampa.setText("Nome Setor/Estampa");
         getContentPane().add(jlSetorEstampa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Produtos", "Estampas", "Setores" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 110, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     /* --------------------------------
     * MÉTODOS - ATIVAR/DESATIVAR CUSTOM
     ----------------------------------- */
@@ -1058,6 +1069,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
 
     private void jbConfirmaProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmaProxActionPerformed
         criarProduto();
+        txtConsulta.setText(ProdutoDAO.infoToString());
     }//GEN-LAST:event_jbConfirmaProxActionPerformed
 
     private void txtNomeEstampaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNomeEstampaAncestorAdded
@@ -1119,6 +1131,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
             apagarProduto();
         }
         
+        txtConsulta.setText(ProdutoDAO.infoToString());
     }//GEN-LAST:event_jbConfirmarSetActionPerformed
 
     private void txtNominhoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNominhoAncestorAdded
@@ -1204,7 +1217,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
             editarProdCor();
         }
         
-        
+        txtConsulta.setText(ProdutoDAO.infoToString());
     }//GEN-LAST:event_jbConfirmarSetorzinhoActionPerformed
 
     private void jbLimparEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparEditActionPerformed
@@ -1342,7 +1355,12 @@ public class JanelaEstoque extends javax.swing.JFrame {
         }
         else if (pes == 'E' && cea == 'E') // EDITAR ESTAMPA
             editarEstampa();
+        txtConsulta.setText(ProdutoDAO.infoToString());
     }//GEN-LAST:event_jbConfirmarEstSetActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1384,6 +1402,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JScrollPane jScrollPane1;

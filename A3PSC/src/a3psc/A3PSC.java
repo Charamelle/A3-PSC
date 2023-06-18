@@ -10,6 +10,6 @@ public class A3PSC {
        
         JanelaEstoque estq = new JanelaEstoque();
         estq.setVisible(true);
-
+        
     } 
 }
