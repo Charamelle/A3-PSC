@@ -4,7 +4,8 @@ public class JanelaEstoque extends javax.swing.JFrame {
 
     private char pes;       // produto, estampa, setor
     private char cea;       // criar, editar, apagar
-    
+    private char prodQPC;   // editar produto: quantidade, preço, cor 
+    private ProdutoDAO ProdutoDAO = new ProdutoDAO();
     /**
      * Creates new form JanelaProduto
      */
@@ -546,12 +547,12 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jlErroSelecionar.setVisible(false);
 
         jlErroIdInvalido.setForeground(new java.awt.Color(204, 0, 0));
-        jlErroIdInvalido.setText("ID inserido inválido.");
-        getContentPane().add(jlErroIdInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 130, -1));
+        jlErroIdInvalido.setText("O ID inserido é inválido.");
+        getContentPane().add(jlErroIdInvalido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 280, -1));
 
         jlErroESExiste.setForeground(new java.awt.Color(204, 0, 0));
         jlErroESExiste.setText("Estampa ou Setor já existente.");
-        getContentPane().add(jlErroESExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 200, -1));
+        getContentPane().add(jlErroESExiste, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 270, -1));
 
         jlErroValorInvalido.setForeground(new java.awt.Color(204, 0, 0));
         jlErroValorInvalido.setText("Valor inserido inválido.");
@@ -646,7 +647,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     * MÉTODOS - AÇÕES
     ----------------------------------- */
     
-    // LIMPAR TUDO
+    // MÉTODO: limpar/dar reset na página
     private void limpar(){
        
         // desativando seções de operações
@@ -673,6 +674,9 @@ public class JanelaEstoque extends javax.swing.JFrame {
         jlErroValorInvalido.setVisible(false);
         jlErroCriarProd.setVisible(false);
         
+        // resetando msg de erro q muda
+        jlErroIdInvalido.setText("O ID inserido é inválido.");
+        
         // limpando as caixas de texto
         txtNominho.setText("");
         txtNomeSetor.setText("");
@@ -687,12 +691,13 @@ public class JanelaEstoque extends javax.swing.JFrame {
         txtQuantidade.setText("");
     }
     
-    // CRIAR COISAS
+    /*~MÉTODOS: AÇÕES CRUD~*/
+    // CRIAR SETOR
     private void criarSetor(){
         String nomeSetor = txtNomeSetor.getText();
         if(!ProdutoDAO.checarSetor(nomeSetor)){
             ProdutoDAO.criarSetor(nomeSetor);
-            jlErroESExiste.setVisible(true);
+            jlErroESExiste.setVisible(false);
             jlConcluido.setVisible(true);
             limpar();
         }
@@ -701,6 +706,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         }
     }
     
+    // MÉTODO: criar nova estampa
     private void criarEstampa(){
         String nomeEstampa = txtNomeEstampa.getText();
         String nomeSetor = txtNomeSetor.getText();
@@ -717,6 +723,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     
     }
     
+    // MÉTODO: criar produto novo
     private void criarProduto(){
         // pegando valores
         String setor = txtSetor.getText();
@@ -771,19 +778,162 @@ public class JanelaEstoque extends javax.swing.JFrame {
         
     }
 
+    // MÉTODO: mudar nome de um setor
     private void editarSetor(){
-    
+        String setor = txtNominho.getText();
+        String novoSetor = txtNomeSetor.getText();
+        
+        if (ProdutoDAO.checarSetor(setor)){                                     // ver se o setor existe
+            ProdutoDAO.editarSetor(setor,novoSetor);
+            jlConcluido.setVisible(true);
+            limpar();
+        } else {
+            jlErroIdInvalido.setText("Nome de setor inválido.");
+            jlErroIdInvalido.setVisible(true);
+        }
     
     }
-    private void editarEstampa(){}
-    private void editarProduto(){}
     
-    private void apagarSetor(){}
-    private void apagarEstampa(){}
-    private void apagarProduto(){}
+    private void editarEstampa(){
+        try {
+            int idEstampa = Integer.parseInt(txtNominho.getText());
+            String novaEstampa = txtNomeEstampa.getText();
+        
+            if(ProdutoDAO.checarEstampa(idEstampa)){                                // ver se a estampa existe
+                ProdutoDAO.editarEstampa(idEstampa, novaEstampa);
+                jlConcluido.setVisible(true);
+                limpar();
+            } else{
+                jlErroIdInvalido.setText("O ID inserido é inválido.");
+                jlErroIdInvalido.setVisible(true);
+            }
+        } catch (NumberFormatException nfe){
+            jlErroIdInvalido.setText("O ID deve ser um número inteiro");
+            jlErroIdInvalido.setVisible(true);
+        }
+        
     
+    }
+    
+    // MÉTODO: editar preço de um produto
+    private void editarProdPreco(){
+        try{
+            int idProd = Integer.parseInt(txtNominho.getText());
+            double novoPreco = Double.parseDouble(txtValor.getText());
+            
+            if(ProdutoDAO.checarProduto(idProd)){
+                ProdutoDAO.editarPreco(idProd,novoPreco);
+                jlConcluido.setVisible(true);
+                limpar();
+            } else{
+                jlErroIdInvalido.setText("O ID inserido é inválido.");
+                jlErroIdInvalido.setVisible(true);
+            }
+        }catch(NumberFormatException nfe){
+           jlErroIdInvalido.setText("O ID deve ser um número inteiro");
+           jlErroIdInvalido.setVisible(true); 
+        }
+    }
+    
+    //MÉTODO: editar quantidade de um produto
+    private void editarProdQtde(){
+         try{
+            int idProd = Integer.parseInt(txtNominho.getText());
+            int novaQtde = Integer.parseInt(txtQnte.getText());
+            
+            if(ProdutoDAO.checarProduto(idProd)){
+                ProdutoDAO.editarQtde(idProd,novaQtde);
+                jlConcluido.setVisible(true);
+                limpar();
+            } else{
+                jlErroIdInvalido.setText("O ID inserido é inválido.");
+                jlErroIdInvalido.setVisible(true);
+            }
+        }catch(NumberFormatException nfe){
+           jlErroIdInvalido.setText("O ID deve ser um número inteiro");
+           jlErroIdInvalido.setVisible(true); 
+        }
+    
+    }
+    
+    // MÉTODO: editar cor de um produto
+    private void editarProdCor(){
+     try{
+        int idProd = Integer.parseInt(txtNominho.getText());
+        String novaCor = txtCor.getText();
+
+        if(ProdutoDAO.checarProduto(idProd)){
+            ProdutoDAO.editarCor(idProd,novaCor);
+            jlConcluido.setVisible(true);
+            limpar();
+        } else{
+            jlErroIdInvalido.setText("O ID inserido é inválido.");
+            jlErroIdInvalido.setVisible(true);
+        }
+        }catch(NumberFormatException nfe){
+           jlErroIdInvalido.setText("O ID deve ser um número inteiro");
+           jlErroIdInvalido.setVisible(true); 
+        }
+    }
+    
+    // MÉTODO: apagar um setor
+    private void apagarSetor(){
+        String setor = txtNominho.getText();
+        if(ProdutoDAO.checarSetor(setor)){
+            ProdutoDAO.delSetor(setor);
+            jlConcluido.setVisible(true);
+            limpar();
+        }
+        else{
+            jlErroIdInvalido.setText("O ID inserido é inválido.");
+            jlErroIdInvalido.setVisible(true);
+        }
+    }
+    
+    private void apagarEstampa(){
+        int idEstampa = Integer.parseInt(txtNominho.getText());
+        if(ProdutoDAO.checarEstampa(idEstampa)){
+            ProdutoDAO.delEstampa(idEstampa);
+            jlConcluido.setVisible(true);
+            limpar();
+        }
+        else{
+            jlErroIdInvalido.setText("O ID inserido é inválido.");
+            jlErroIdInvalido.setVisible(true);
+        }
+    }
+    
+    private void apagarProduto(){
+    
+        try{
+            int idProd = Integer.parseInt(txtNominho.getText());
+            if(ProdutoDAO.checarProduto(idProd)){
+                ProdutoDAO.delProd(idProd);
+                jlConcluido.setVisible(true);
+                limpar();
+            }
+            else{
+                jlErroIdInvalido.setText("O ID inserido é inválido.");
+                jlErroIdInvalido.setVisible(true);
+            }
+        }
+        catch(NumberFormatException nfe){
+            jlErroIdInvalido.setText("O ID deve ser um número inteiro");
+           jlErroIdInvalido.setVisible(true); 
+        }
+    }
+    
+    
+    
+    /*~~~~~~~~~+~~~~~~~~~*/
+    /*~ SETUP DE BOTÕES ~*/
+    /*~~~~~~~~~+~~~~~~~~~*/
+    
+    
+  
     private void jbCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCriarActionPerformed
         cea = 'C';
+        jlConcluido.setVisible(false);
         switch (pes) {
             case 'P':
                 // CRIAR PRODUTOS
@@ -830,6 +980,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
 
     private void jbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbApagarActionPerformed
         cea = 'A';
+        jlConcluido.setVisible(false);
         if(pes == 'P' || pes == 'E' || pes == 'S'){
             ativSecao1(true);
             ativSecao2(false);
@@ -860,7 +1011,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNome1ActionPerformed
 
     private void jrqtdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrqtdeActionPerformed
-        // TODO add your handling code here:
+        prodQPC = 'Q';
         // vai mostrar apenas a nova qnt
         jlNewQnte.setEnabled(true);
         txtQnte.setEnabled(true);
@@ -871,7 +1022,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jrqtdeActionPerformed
 
     private void jrPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrPrecoActionPerformed
-        // TODO add your handling code here:
+        prodQPC = 'P';
         //jLabel e txt        
         jlValor.setEnabled(true);
         txtValor.setEnabled(true);
@@ -889,7 +1040,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jrPrecoActionPerformed
 
     private void jrCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrCorActionPerformed
-        // TODO add your handling code here:
+        prodQPC = 'C';
         jlNovaCor.setEnabled(true);
         txtCor.setEnabled(true);
         
@@ -958,7 +1109,16 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorzinhaActionPerformed
 
     private void jbConfirmarSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarSetActionPerformed
-        // TODO add your handling code here:
+        if(pes == 'S' && cea == 'A'){
+            apagarSetor();
+        }
+        else if (pes == 'E' && cea == 'A'){
+            apagarEstampa();
+        }
+        else if (pes == 'P' && cea == 'A'){
+            apagarProduto();
+        }
+        
     }//GEN-LAST:event_jbConfirmarSetActionPerformed
 
     private void txtNominhoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtNominhoAncestorAdded
@@ -974,6 +1134,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         pes = 'E';
         jrSetorMenu.setEnabled(false);
         jrProdutoMenuzinho.setEnabled(false);
+        jlConcluido.setVisible(false);
     }//GEN-LAST:event_jrEstampaMenuActionPerformed
 
     private void txtValorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtValorAncestorAdded
@@ -1006,6 +1167,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         pes = 'S';
         jrEstampaMenu.setEnabled(false);
         jrProdutoMenuzinho.setEnabled(false);
+        jlConcluido.setVisible(false);
     }//GEN-LAST:event_jrSetorMenuActionPerformed
 
     private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
@@ -1032,7 +1194,17 @@ public class JanelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLimpandoBotton1ActionPerformed
 
     private void jbConfirmarSetorzinhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarSetorzinhoActionPerformed
-        // TODO add your handling code here:
+        if(pes == 'P' && cea == 'E' && prodQPC == 'Q'){
+            editarProdQtde();
+        } 
+        else if(pes == 'P' && cea == 'E' && prodQPC == 'P'){
+            editarProdPreco();
+        }
+        else if(pes == 'P' && cea == 'E' && prodQPC == 'C'){
+            editarProdCor();
+        }
+        
+        
     }//GEN-LAST:event_jbConfirmarSetorzinhoActionPerformed
 
     private void jbLimparEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparEditActionPerformed
@@ -1043,6 +1215,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
 
     private void jbEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditar1ActionPerformed
         cea = 'E';
+        jlConcluido.setVisible(false);
         switch (pes) {
             case 'P':
                 // PRA EDITAR PRODUTO
@@ -1107,7 +1280,7 @@ public class JanelaEstoque extends javax.swing.JFrame {
         pes = 'P';
         jrEstampaMenu.setEnabled(false);
         jrSetorMenu.setEnabled(false);
-
+        jlConcluido.setVisible(false);
         
     }//GEN-LAST:event_jrProdutoMenuzinhoActionPerformed
 
@@ -1161,9 +1334,14 @@ public class JanelaEstoque extends javax.swing.JFrame {
         if (pes == 'S' && cea == 'C'){      // CRIAR SETOR
             criarSetor();
         }
-        else if(pes == 'E' && cea == 'C'){  // CRIAR ESTAMPA
+        else if (pes == 'E' && cea == 'C'){  // CRIAR ESTAMPA
             criarEstampa();
         }
+        else if (pes == 'S' && cea == 'E'){ // EDITAR SETOR
+           editarSetor();
+        }
+        else if (pes == 'E' && cea == 'E') // EDITAR ESTAMPA
+            editarEstampa();
     }//GEN-LAST:event_jbConfirmarEstSetActionPerformed
 
     /**

@@ -8,7 +8,7 @@ public class Login {
     /* ------------ ATRIBUTOS ------------ */
     private String usuario;
     private String senha;
-    private static Connection con = Conexao.getConexao();                       // conectando com a database
+    private static final Connection con = Conexao.getConexao();                       // conectando com a database
     
 
     /* ------------ CONSTRUTOR ------------ */
@@ -24,12 +24,7 @@ public class Login {
         try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            if(rs.next()){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return rs.next();
             
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,11 +37,7 @@ public class Login {
     // MÉTODO: verificar se o nome de usuário é permitido
     private static boolean usuarioOK(String usuario){
         char[]temp = usuario.toCharArray();
-        if(temp.length<3){
-            return false;
-        } else{
-        return true;
-        }
+        return temp.length >= 3;
         
     }
     
@@ -158,4 +149,5 @@ public class Login {
             return false;
         }
     }
+ 
 }

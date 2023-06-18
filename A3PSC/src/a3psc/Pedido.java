@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public class Pedido {
     /* ------------ ATRIBUTOS ------------ */
-    private static Connection con = Conexao.getConexao();                   // estabelecendo conexão com o BD
+    private static final Connection con = Conexao.getConexao();                   // estabelecendo conexão com o BD
     private static int idPedidoAtivo;
     
 
@@ -39,7 +39,7 @@ public class Pedido {
     }
     
     
-    // MÉTODO: cancelar/apagar pedido --- ocorre ao fechar a aba/voltar pro menu
+    // MÉTODO: cancelar/apagar pedido
     public static void cancelarPedido(){
         setIdAtivo();
         String query = "DELETE FROM pedido WHERE idPedido = ?";

@@ -50,12 +50,6 @@ public class Produto {
         };
     }
     
-    // MÉTODO: pra poder printar a info
-    protected String toStringInfo(){
-        String txt = "Nome: " + this.nome + "\nSetor: " + this.setor + "\nCor: "+this.cor+"\nTamanho: "+this.tamanho+"\nEstampa: "+this.estampa+" (ID: "+this.idEstampa+")\nQuantidade: "+this.qtde+"\nPreco: "+this.preco+"\n----+---";
-        return txt;
-    }
-    
     // MÉTODO: get preço
     protected double getPreco(){
         return this.preco;

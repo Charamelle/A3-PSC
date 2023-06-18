@@ -98,7 +98,7 @@ public class ProdutoDAO extends Produto {
 
 
     // MÉTODO: editar nome da estampa                                          
-    public static void editaEstampa(int idEstampa, String estampaNova){
+    public static void editarEstampa(int idEstampa, String estampaNova){
         String query1 = "UPDATE estampa SET nomeEstampa = ? WHERE idEstampa = ?";
         String query2 = "UPDATE produto SET estampa = ? WHERE idEstampa = ?;";
         try {
@@ -125,7 +125,7 @@ public class ProdutoDAO extends Produto {
     
 
     // MÉTODO: editar nome do setor                                            
-    public static void editaSetor(String setor, String setorNovo){
+    public static void editarSetor(String setor, String setorNovo){
         String query1 = "UPDATE setor SET nomeSetor = ? WHERE nomeSetor = ?";
         String query2 = "UPDATE estampa SET setorEstampa = ? WHERE setorEstampa = ?;";
         String query3 = "UPDATE produto SET setor = ? WHERE setor = ?;";
@@ -159,7 +159,7 @@ public class ProdutoDAO extends Produto {
     
     
     // MÉTODO: editar quantidade                                             
-    public static void editaQtde(int idProduto, int qtdeNova){
+    public static void editarQtde(int idProduto, int qtdeNova){
     String query = "UPDATE produto SET qtde = ? WHERE idProd = ?";
        try {
                 PreparedStatement ps = con.prepareStatement(query);
@@ -167,7 +167,8 @@ public class ProdutoDAO extends Produto {
                 ps.setInt(2,idProduto);
                 ps.execute();
 
-                ps.close();                                               
+                ps.close();    
+                sync();
             }
             catch (SQLException ex) {
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -176,11 +177,11 @@ public class ProdutoDAO extends Produto {
     
     
     // MÉTODO: editar preço                                                     
-    public static void editaPreco(int idProduto, int precoNovo){
+    public static void editarPreco(int idProduto, double precoNovo){
     String query = "UPDATE produto SET preco = ? WHERE idProd = ?";
         try {
                 PreparedStatement ps = con.prepareStatement(query);
-                ps.setInt(1,precoNovo);
+                ps.setDouble(1,precoNovo);
                 ps.setInt(2,idProduto);
                 ps.execute();
 
@@ -191,25 +192,39 @@ public class ProdutoDAO extends Produto {
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+    
+    // MÉTODO: editar cor                                             
+    public static void editarCor(int idProduto, String corNova){
+    String query = "UPDATE produto SET cor = ? WHERE setor = ? AND cor = ? AND idEstampa = ?";
+       try {    
+                sync();
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.setString(1,corNova);
+                ps.setString(2,produtos[idProduto].setor);
+                ps.setString(3,produtos[idProduto].cor);
+                ps.setInt(4,produtos[idProduto].idEstampa);
+                ps.execute();
+
+                ps.close();
+                sync();
+                updateNome("cor");
+                
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
 
 
     // MÉTODO: deletar produto (vai apagar todos os tamanhos)                  
     public void delProd(int idProduto){
-        String query1 = "SELECT * FROM produto WHERE idProd = "+idProduto;
-        String query2 = "DELETE FROM PRODUTO WHERE setor = ? AND cor = ? AND idEstampa = ?";
+        String query = "DELETE FROM PRODUTO WHERE setor = ? AND cor = ? AND idEstampa = ?";
         try {
-            Statement stmt = con.createStatement();                                             // pegando as informações que determinam o produto
-            ResultSet rs = stmt.executeQuery(query1);                                     // ^^ aí dá pra apagar todos os outros que são a msm camiseta,
-            
-            if(rs.next()){                                                                          // só que de tamanhos diferentes :)
-                String setor = rs.getString("setor");
-                String cor = rs.getString("cor");
-                int idEstampa = rs.getInt("idEstampa");
-            }
-            PreparedStatement ps = con.prepareStatement(query2);
-            ps.setString(1,setor);
-            ps.setString(2,cor);
-            ps.setInt(3,idEstampa);
+            sync();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1,produtos[idProduto].setor);
+            ps.setString(2,produtos[idProduto].cor);
+            ps.setInt(3,produtos[idProduto].idEstampa);
             ps.execute();
             ps.close();                                              
             }
@@ -219,26 +234,33 @@ public class ProdutoDAO extends Produto {
     
     }
     
-
-    // MÉTODO: deletar estampa                                                  
-    public void delEstampa(int idEstampa){
-        String query1 = "SELECT idProd FROM produto WHERE idEstampa = "+idEstampa;
-        String query2 = "DELETE FROM estampa WHERE idEstampa = ?";
-        
+    // MÉTODO: deletar produtos de uma estampa                  
+    public void delProdEstampa(int idEstampa){
+        String query = "DELETE FROM PRODUTO WHERE idEstampa = ?";
         try {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query1);
-            
-            while(rs.next()){
-                int idProd = rs.getInt(1);                                          // excluindo todos os produtos que usam essa estampa
-                delProd(idProd);
-            }
-            
-            PreparedStatement ps = con.prepareStatement(query2);
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1,idEstampa);
             ps.execute();
             ps.close();                                              
             }
+        catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
+    
+    // MÉTODO: deletar estampa                                                  
+    public void delEstampa(int idEstampa){
+        String query = "DELETE FROM estampa WHERE idEstampa = ?";
+        
+        try {         
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,idEstampa);
+            ps.execute();
+            ps.close();                                              
+            delProdEstampa(idEstampa);
+        }
         catch (SQLException ex) {
                 Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -316,6 +338,21 @@ public class ProdutoDAO extends Produto {
         }
     }
     
+    
+    // MÉTODO: verificar se o produto já existe
+    public static boolean checarProduto(int idProd){
+        String query = "SELECT * FROM PRODUTO WHERE idProd = '"+idProd+"'";
+        
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return rs.next();
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, ex);
+            return false;   
+        }
+    }
     
     // MÉTODO: verificar se a estampa já existe                                 
     public static boolean checarEstampa(String setor, String estampa){
@@ -466,7 +503,7 @@ public class ProdutoDAO extends Produto {
             query1 = "SELECT idProd FROM produto WHERE setor = "+op;
         }
         else if (op == "cor"){
-            query1 = "SELECT idProd FROM produto WHERE  = "+op;
+            query1 = "SELECT idProd FROM produto WHERE cor = "+op;
         }
         
         String query2 = "UPDATE produto SET nomeProd = ? WHERE idProd = ?";
@@ -491,8 +528,66 @@ public class ProdutoDAO extends Produto {
         }
     }
     
-    public static void listaProd(){
+    public static void setupBD(){
+    // setores
+        criarSetor("MUSE");
+        criarSetor("MCR");
+        criarSetor("KISS");
+        criarSetor("ACDC");
+        
+        // estampas
+        criarEstampa("MUSE","UPRISING");
+        criarEstampa("MUSE","PSYCHO");
+        criarEstampa("MUSE","HYSTERIA");
+        criarEstampa("MCR","THE BLACK PARADE");
+        criarEstampa("KISS","DYNASTY");
+        criarEstampa("ACDC","HIGHWAY TO HELL");
+        criarEstampa("ACDC","BACK IN BLACK");
+        
+        // produtos
+        double preco = Produto.precoBase;
+        criarProduto("MUSE","BRANCA","UPRISING",30,preco);
+        criarProduto("MUSE","PRETA","UPRISING",30,preco);
+        criarProduto("MUSE","PRETA","PSYCHO",70,preco);
+        criarProduto("MUSE","CINZA","HYSTERIA",35,preco);
+        criarProduto("MCR","BRANCA","THE BLACK PARADE",75,preco);
+        criarProduto("MCR","PRETA","THE BLACK PARADE",70,preco);
+        criarProduto("KISS","PRETA","DYNASTY",60,preco);
+        criarProduto("KISS","BRANCA","DYNASTY",60,preco);
+        criarProduto("ACDC","PRETA","HIGHWAY TO HELL",80,preco);
+        criarProduto("ACDC","VINHO","HIGHWAY TO HELL",80,preco);
+        criarProduto("ACDC","PRETA","BACK IN BLACK",70,preco);
+        criarProduto("ACDC","CINZA","BACK IN BLACK",70,preco);
+    }
     
+    public static void resetBD(){
+        try {
+            PreparedStatement ps1 = con.prepareStatement("DELETE FROM estampa");
+            PreparedStatement ps2 = con.prepareStatement("ALTER TABLE estampa AUTO_INCREMENT=1");
+            PreparedStatement ps3 = con.prepareStatement("DELETE FROM setor");
+            PreparedStatement ps4 = con.prepareStatement("DELETE FROM produto");
+            PreparedStatement ps5 = con.prepareStatement("ALTER TABLE produto AUTO_INCREMENT=1");
+            ps1.execute();
+            ps2.execute();
+            ps3.execute();
+            ps4.execute();
+            ps5.execute();
+            ps1.close();
+            ps2.close();
+            ps3.close();
+            ps4.close();
+            ps5.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public static void infoToString(){
+        String txt = "";
+        //pegar setor - NOME
+        //pegar estampas --> NOME - ID - SETOR
+        // pegar produto --> NOME - ID
     }
 
     
