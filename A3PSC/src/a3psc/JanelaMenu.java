@@ -32,6 +32,7 @@ public class JanelaMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jmMenuPedido = new javax.swing.JMenu();
         jmMenuPagamento = new javax.swing.JMenu();
+        jMenuEditarUsuario = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,6 +105,19 @@ public class JanelaMenu extends javax.swing.JFrame {
         });
         jMenuBar1.add(jmMenuPagamento);
 
+        jMenuEditarUsuario.setText("Editar Usuario");
+        jMenuEditarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuEditarUsuarioMouseClicked(evt);
+            }
+        });
+        jMenuEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEditarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenuEditarUsuario);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -158,10 +172,25 @@ public class JanelaMenu extends javax.swing.JFrame {
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
         this.dispose();
-         JanelaEstoque telona = new JanelaEstoque();
+        
+        JanelaEstoque telona = new JanelaEstoque();
         telona.setVisible(true);
         telona.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenuEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditarUsuarioActionPerformed
+        // TODO add your handling code here:this.dispose();
+    
+    }//GEN-LAST:event_jMenuEditarUsuarioActionPerformed
+
+    private void jMenuEditarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarUsuarioMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        
+        JanelaEditarUsuario telaEdit = new JanelaEditarUsuario();
+        telaEdit.setVisible(true);
+        telaEdit.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuEditarUsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -201,6 +230,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuEditarUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu jmMenuPagamento;
     private javax.swing.JMenu jmMenuPedido;

@@ -35,6 +35,15 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmMenuPagamentoActionPerformed"/>
           </Events>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuEditarUsuario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Editar Usuario"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuEditarUsuarioMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuEditarUsuarioActionPerformed"/>
+          </Events>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
