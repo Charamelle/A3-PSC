@@ -771,7 +771,10 @@ public class JanelaEstoque extends javax.swing.JFrame {
         
     }
 
-    private void editarSetor(){}
+    private void editarSetor(){
+    
+    
+    }
     private void editarEstampa(){}
     private void editarProduto(){}
     

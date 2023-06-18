@@ -491,6 +491,9 @@ public class ProdutoDAO extends Produto {
         }
     }
     
+    public static void listaProd(){
+    
+    }
 
     
 }
