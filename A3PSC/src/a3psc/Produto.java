@@ -35,7 +35,8 @@ public class Produto {
     
     // MÉTODO: gerar automaticamente o nome do produto
     protected String gerarNome(){
-        String nome = "CAMISETA " + this.setor.toUpperCase() + " " + this.estampa.toUpperCase() + " " + this.cor.toUpperCase() + " TAM " + this.tamanho.toUpperCase();
+        String nome = "CAMISETA " + this.setor.toUpperCase() + " " + this.estampa.toUpperCase() + " " 
+                    + this.cor.toUpperCase() + " TAM " + this.tamanho.toUpperCase();
         return nome;
     }
      

@@ -10,7 +10,7 @@ public class ProdutoDAO extends Produto {
     /* ------------ ATRIBUTOS ------------ */
     private static int pos;
     private static Produto[] produtos = new Produto[600];
-    private static Connection con = Conexao.getConexao();
+    private static final Connection con = Conexao.getConexao();
     
 
     /* ------------ CONSTRUTOR ------------ */
@@ -21,8 +21,8 @@ public class ProdutoDAO extends Produto {
 
     /*~~~ ÍNDICE : MÉTODOS ~~~*/
     /* crud: linha 31         */
-    /* suporte: linha 292     */
-    /* sincronizar: linha 415 */
+    /* suporte: linha 301     */
+    /* sincronizar: linha 444 */
     /*~~~~~~~~~~~~~~~~~~~~~~~~*/
   
 
@@ -535,7 +535,7 @@ public class ProdutoDAO extends Produto {
     
     public static void setupBD(){
         // usuário
-        Login.cadastrar("admin","umasenhamuitolonga1234");
+        Login.cadastrar("admin","1234");
         
         // setores
         criarSetor("MUSE");

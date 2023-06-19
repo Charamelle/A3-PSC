@@ -242,6 +242,7 @@ public class JanelaPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNome2AncestorAdded
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // ADD PRODUTO
         try{
             int idProd = Integer.parseInt(txtNome2.getText());
             if(ProdutoDAO.checarProduto(idProd)){
@@ -269,6 +270,7 @@ public class JanelaPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // REMOVER PRODUTO
         try{
             int idProd = Integer.parseInt(txtNome2.getText());
             if(ProdutoDAO.checarProduto(idProd)){
@@ -305,6 +307,7 @@ public class JanelaPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNome2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // FINALIZAR/CONCLUIR PEDIDO
         if(Pgto == false){
             jlErroPgto.setVisible(true);
         }

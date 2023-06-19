@@ -53,7 +53,7 @@ public class JanelaEditarUsuario extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(654, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Marola", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Marola", 3, 24)); // NOI18N
         jLabel1.setText("Gerenciar Usuários");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 230, -1));
 

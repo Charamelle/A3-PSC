@@ -81,8 +81,6 @@ public class Pedido {
         } catch (SQLException ex) {
             Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    
     }
     
     
@@ -130,10 +128,7 @@ public class Pedido {
                ps.close();
            } catch (SQLException ex) {
                Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           
-           
-           
+           } 
        }     
     }
     
@@ -169,7 +164,6 @@ public class Pedido {
                     Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        
         }
         else if(!tem){
             System.out.println("o produto selecionado não está no carrinho");
